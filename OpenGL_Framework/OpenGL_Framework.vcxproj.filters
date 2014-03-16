@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{4ac95ac4-e69b-4089-b8ad-16881717d48b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scene">
+      <UniqueIdentifier>{0073d81a-e439-4348-8ec5-391811090b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework">
+      <UniqueIdentifier>{a4e839c5-8985-486d-ba10-f6181b99f853}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework">
+      <UniqueIdentifier>{4869d731-1df5-4bee-826a-9dcb461762f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Objects">
+      <UniqueIdentifier>{b6d795a2-1edb-4303-b9f5-ea6d67b85401}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Objects">
+      <UniqueIdentifier>{3f604adc-80dd-48fa-a117-aef308986c13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Adapters">
+      <UniqueIdentifier>{de6c8d96-a313-480c-97bb-a95254648b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Adapters">
+      <UniqueIdentifier>{ac4efaf2-519c-405f-8ff6-efb15d2f982f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Scene">
+      <UniqueIdentifier>{ec0dd136-007d-40cd-9f09-42bf07aa6065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Scene">
+      <UniqueIdentifier>{8633f473-f161-4af0-8f58-f17945d91836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\Utility">
+      <UniqueIdentifier>{a807ed65-71ef-41d6-9154-72e37d0f0f95}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjCube.cpp">
+      <Filter>Source Files\Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="InputAdapter.cpp">
+      <Filter>Source Files\Framework\Adapters</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGame.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="BFont.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Framework\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneAdapter.cpp">
+      <Filter>Source Files\Framework\Adapters</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_Splash.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameDirector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjCube.h">
+      <Filter>Header Files\Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="InputAdapter.h">
+      <Filter>Header Files\Framework\Adapters</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGame.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files\Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneAdapter.h">
+      <Filter>Header Files\Framework\Adapters</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_Splash.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDirector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugPrint.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="BFont.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="key_codes.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
