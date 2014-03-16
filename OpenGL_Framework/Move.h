@@ -21,18 +21,16 @@ private:
 
 	//bools used for lerp functions for local movement
 	bool m_lMoveX, m_lMoveY, m_lMoveZ;
-	bool m_lRotX, m_lRotY, m_lRotZ;
 
 	//percentage for smooth move and rotate functions for world movement
 	float m_lerpX, m_lerpY, m_lerpZ;
 	float m_lerpRotX, m_lerpRotY, m_lerpRotZ;
 
-	//percentage for smooth move and rotate functions for local movement
+	//percentage for smooth move functions for local movement
 	float m_lLerpX, m_lLerpY, m_lLerpZ;
-	float m_lLerpRotX, m_lLerpRotY, m_lLerpRotZ;
 
 	//frame counts so smooth movement doesn't keep resetting
-	int fCountw, fCountl, fCountrw, fCountrl;
+	int fCountw, fCountl, fCountrw;
 
 	//Forward vector of the object
 	Vector* m_forward;
@@ -63,6 +61,8 @@ public:
 	void rotateTo(AXIS axis, float angle);
 	//Rotate an object to an angle on the world axis with acceleration
 	void smoothRotateTo(AXIS axis, float angle, float speed);
+
+	void calculateLocalVectors();
 
 	void Update();
 };
