@@ -9,6 +9,9 @@ using namespace std;
 #include "InputAdapter.h"
 #include "SceneAdapter.h"
 
+#include "TimeControl.h"
+#include "GameDirector.h"
+
 #include "Object.h"
 #include "ObjCube.h"
 
@@ -25,9 +28,10 @@ class Game : public BaseGame{
 private:
 	// HERE WE DECLARE ANY FONTS, TIMERS OR OTHER VARIABLES WE WANT
 	InputAdapter* m_input;
-	InputInfo* input;
-
 	SceneAdapter* scene;
+
+	TimeControl* timeControl;
+	GameDirector* director;
 
 	vector<Object*> m_objects;
 

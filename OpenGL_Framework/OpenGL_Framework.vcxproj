@@ -57,6 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>E:\_Work\Project-Lotus\UtilityDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -101,6 +102,7 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Scene_Splash.cpp" />
+    <ClCompile Include="TimeControl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseGame.h" />
@@ -121,6 +123,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneMenu.h" />
     <ClInclude Include="Scene_Splash.h" />
+    <ClInclude Include="TimeControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="utility.h" />
     <ClInclude Include="vector.h" />

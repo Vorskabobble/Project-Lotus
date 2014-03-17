@@ -5,6 +5,10 @@ Game::Game(void){
 }
 
 Game::~Game(void){
+	delete m_input;
+	delete scene;
+	delete timeControl;
+	delete director;
 }
 
 void Game::InitOpenGL(){
@@ -15,13 +19,23 @@ void Game::Initialise(){
 	DebugOut("Game::Initialise being called");
 	m_input = new InputAdapter();
 	scene = new SceneAdapter();
+
+	timeControl = TimeControl::getInstance();
+	director = GameDirector::getInstance();
 }
 
 void Game::Shutdown(){
 	DebugOut("Game::Shutdown being called");
+	m_objects.clear();
 }
 
 void Game::Update(){
+	timeControl->Update();
+	char s[250];
+	sprintf_s(s, "delta : %2.20f, current : %2.20f, last : %2.20f, FPS : %3.3f", GAME_TIME.delta, GAME_TIME.current, GAME_TIME.last, GAME_TIME.fps);
+	if (GAME_INPUT.keyPressed[VK_SPACE]){
+		DebugOut(s);
+	}
 	scene->update();
 }
 

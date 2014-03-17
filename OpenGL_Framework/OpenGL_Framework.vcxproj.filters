@@ -87,10 +87,13 @@
     <ClCompile Include="Scene_Splash.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameDirector.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMenu.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeControl.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -128,12 +131,6 @@
     <ClInclude Include="Scene_Splash.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="SceneMenu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameDirector.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="DebugPrint.h">
       <Filter>Header Files\Framework\Utility</Filter>
     </ClInclude>
@@ -146,9 +143,6 @@
     <ClInclude Include="key_codes.h">
       <Filter>Header Files\Framework\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="utility.h">
-      <Filter>Header Files\Framework\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Header Files\Framework\Utility</Filter>
     </ClInclude>
@@ -156,6 +150,18 @@
       <Filter>Header Files\Framework\Utility</Filter>
     </ClInclude>
     <ClInclude Include="vector.h">
+      <Filter>Header Files\Framework\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="GameDirector.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMenu.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
       <Filter>Header Files\Framework\Utility</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,10 +13,12 @@ struct tagGameInput{
 }static GAME_INPUT = { false, 0, 0 };
 
 struct tagGameTime{
-	double current;
-	double last;
-	double delta;
-}static GAME_TIME = { 0, 0, 0 };
+	float current;
+	float last;
+	float delta;
+	float fps;
+	float avgFps;
+} static GAME_TIME = { 0, 0, 0, 0, 0 };
 
 struct tagManageScene{
 	bool load;
@@ -37,5 +39,4 @@ static float lerp(float start, float end, float percent){
 	}
 	return (start + (percent * (end - start)));
 }
-
 #endif //!UTILITY_H
