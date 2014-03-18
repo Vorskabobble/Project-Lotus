@@ -3,6 +3,7 @@
 GameDirector* GameDirector::instance = NULL;
 
 GameDirector::GameDirector(){
+	Game = GameInfo::getInstance();
 }
 
 GameDirector::~GameDirector(){
@@ -17,19 +18,19 @@ GameDirector* GameDirector::getInstance(){
 }
 
 void GameDirector::loadScene(std::string name, Scene& scene){
-	GAME_MANAGER.load = true;
-	GAME_MANAGER.loadName = name;
-	GAME_MANAGER.scene = &scene;
+	Game->MANAGER.load = true;
+	Game->MANAGER.loadName = name;
+	Game->MANAGER.scene = &scene;
 }
 
 void GameDirector::unloadScene(std::string name){
-	GAME_MANAGER.unload = true;
-	GAME_MANAGER.unloadName = name;
+	Game->MANAGER.unload = true;
+	Game->MANAGER.unloadName = name;
 }
 
 void GameDirector::changeScene(std::string name){
-	GAME_MANAGER.change = true;
-	GAME_MANAGER.changeName = name;
+	Game->MANAGER.change = true;
+	Game->MANAGER.changeName = name;
 }
 
 void GameDirector::setGameInfo(std::string infoName, float value){

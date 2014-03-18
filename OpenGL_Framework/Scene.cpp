@@ -2,6 +2,7 @@
 
 Scene::Scene(){
 	director = GameDirector::getInstance();
+	Game = GameInfo::getInstance();
 }
 
 Scene::~Scene(){

@@ -4,6 +4,7 @@ SceneManager* SceneManager::single = NULL;
 
 SceneManager::SceneManager(){
 	m_curScene = NULL;
+	Game = GameInfo::getInstance();
 }
 
 SceneManager::~SceneManager(){
@@ -45,18 +46,18 @@ Scene* SceneManager::getCurrentScene(){
 }
 
 void SceneManager::Update(){
-	if (GAME_MANAGER.load){
-		if (GAME_MANAGER.scene){
-			addScene(GAME_MANAGER.loadName, GAME_MANAGER.scene);
+	if (Game->MANAGER.load){
+		if (Game->MANAGER.scene){
+			addScene(Game->MANAGER.loadName, Game->MANAGER.scene);
 		}
-		GAME_MANAGER.load = false;
+		Game->MANAGER.load = false;
 	}
-	if (GAME_MANAGER.unload){
-		removeScene(GAME_MANAGER.unloadName);
-		GAME_MANAGER.unload = false;
+	if (Game->MANAGER.unload){
+		removeScene(Game->MANAGER.unloadName);
+		Game->MANAGER.unload = false;
 	}
-	if (GAME_MANAGER.change){
-		changeScene(GAME_MANAGER.changeName);
-		GAME_MANAGER.change = false;
+	if (Game->MANAGER.change){
+		changeScene(Game->MANAGER.changeName);
+		Game->MANAGER.change = false;
 	}
 }

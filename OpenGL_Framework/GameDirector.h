@@ -1,11 +1,12 @@
 #pragma once
 #include <stdlib.h>
 #include <map>
-#include "utility.h"
+#include "GameInfo.h"
 
 class GameDirector{
 private:
 	static GameDirector* instance;
+	GameInfo* Game;
 	std::map<std::string, float> m_gameInfo;
 public:
 	~GameDirector();

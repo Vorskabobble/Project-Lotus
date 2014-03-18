@@ -3,6 +3,7 @@
 
 #include "Object.h"
 #include "GameDirector.h"
+#include "GameInfo.h"
 #include "key_codes.h"
 
 class Scene{
@@ -10,6 +11,7 @@ private:
 	std::vector<Object*> m_objects;
 protected:
 	GameDirector* director;
+	GameInfo* Game;
 public:
 	Scene();
 	~Scene();

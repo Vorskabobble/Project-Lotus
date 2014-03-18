@@ -4,7 +4,8 @@
 #include <cmath>
 
 #include "vector.h"
-#include "utility.h"
+#include "GameInfo.h"
+#include "MathFunctions.h"
 
 //Z axis is forward
 
@@ -37,6 +38,7 @@ private:
 	Vector* m_left;
 	Vector* m_up;
 
+	GameInfo* Game;
 public:
 	Move();
 	Move(Vector& pos, Vector& angle);

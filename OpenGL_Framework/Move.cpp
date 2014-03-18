@@ -18,6 +18,8 @@ Move::Move(){
 	m_lLerpX = m_lLerpY = m_lLerpZ = 0;
 
 	fCountw = fCountl = fCountrw = 0;
+
+	Game = GameInfo::getInstance();
 }
 
 Move::~Move(){
@@ -42,13 +44,13 @@ void Move::move(AXIS axis, float speed){
 	switch (axis)
 	{
 	case X:
-		position->x += speed * GAME_TIME.delta;
+		position->x += speed * Game->TIME.delta;
 		break;
 	case Y:
-		position->y += speed * GAME_TIME.delta;
+		position->y += speed * Game->TIME.delta;
 		break;
 	case Z:
-		position->z += speed * GAME_TIME.delta;
+		position->z += speed * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -61,17 +63,17 @@ void Move::smoothMove(AXIS axis, float speed, float accel){
 	{
 	case X:
 		m_moveX = true;
-		m_lerpX += accel * GAME_TIME.delta;
+		m_lerpX += accel * Game->TIME.delta;
 		position->x += lerp(0, speed, m_lerpX);
 		break;
 	case Y:
 		m_moveY = true;
-		m_lerpY += accel * GAME_TIME.delta;
+		m_lerpY += accel * Game->TIME.delta;
 		position->y += lerp(0, speed, m_lerpY);
 		break;
 	case Z:
 		m_moveZ = true;
-		m_lerpZ += accel * GAME_TIME.delta;
+		m_lerpZ += accel * Game->TIME.delta;
 		position->z += lerp(0, speed, m_lerpY);
 		break;
 	default:
@@ -83,19 +85,19 @@ void Move::localMove(AXIS axis, float speed){
 	switch (axis)
 	{
 	case X:
-		position->x += m_left->x * speed * GAME_TIME.delta;
-		position->y += m_left->y * speed * GAME_TIME.delta;
-		position->z += m_left->z * speed * GAME_TIME.delta;
+		position->x += m_left->x * speed * Game->TIME.delta;
+		position->y += m_left->y * speed * Game->TIME.delta;
+		position->z += m_left->z * speed * Game->TIME.delta;
 		break;
 	case Y:
-		position->x += m_up->x * speed * GAME_TIME.delta;
-		position->y += m_up->y * speed * GAME_TIME.delta;
-		position->z += m_up->z * speed * GAME_TIME.delta;
+		position->x += m_up->x * speed * Game->TIME.delta;
+		position->y += m_up->y * speed * Game->TIME.delta;
+		position->z += m_up->z * speed * Game->TIME.delta;
 		break;
 	case Z:
-		position->x += m_forward->x * speed * GAME_TIME.delta;
-		position->y += m_forward->y * speed * GAME_TIME.delta;
-		position->z += m_forward->z * speed * GAME_TIME.delta;
+		position->x += m_forward->x * speed * Game->TIME.delta;
+		position->y += m_forward->y * speed * Game->TIME.delta;
+		position->z += m_forward->z * speed * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -108,24 +110,24 @@ void Move::localSmoothMove(AXIS axis, float speed, float accel){
 	{
 	case X:
 		m_lMoveX = true;
-		m_lLerpX += accel * GAME_TIME.delta;
-		position->x += m_left->x * lerp(0, speed, m_lLerpX) * GAME_TIME.delta;
-		position->y += m_left->y * lerp(0, speed, m_lLerpX) * GAME_TIME.delta;
-		position->z += m_left->z * lerp(0, speed, m_lLerpX) * GAME_TIME.delta;
+		m_lLerpX += accel * Game->TIME.delta;
+		position->x += m_left->x * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
+		position->y += m_left->y * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
+		position->z += m_left->z * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
 		break;
 	case Y:
 		m_lMoveY = true;
-		m_lLerpY += accel * GAME_TIME.delta;
-		position->x += m_up->x * lerp(0, speed, m_lLerpY) * GAME_TIME.delta;
-		position->y += m_up->y * lerp(0, speed, m_lLerpY) * GAME_TIME.delta;
-		position->z += m_up->z * lerp(0, speed, m_lLerpY) * GAME_TIME.delta;
+		m_lLerpY += accel * Game->TIME.delta;
+		position->x += m_up->x * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
+		position->y += m_up->y * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
+		position->z += m_up->z * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
 		break;
 	case Z:
 		m_lMoveZ = true;
-		m_lLerpZ += accel * GAME_TIME.delta;
-		position->x += m_forward->x * lerp(0, speed, m_lLerpZ) * GAME_TIME.delta;
-		position->y += m_forward->y * lerp(0, speed, m_lLerpZ) * GAME_TIME.delta;
-		position->z += m_forward->z * lerp(0, speed, m_lLerpZ) * GAME_TIME.delta;
+		m_lLerpZ += accel * Game->TIME.delta;
+		position->x += m_forward->x * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
+		position->y += m_forward->y * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
+		position->z += m_forward->z * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -136,13 +138,13 @@ void Move::rotateBy(AXIS axis, float angle){
 	switch (axis)
 	{
 	case X:
-		rotation->x += angle * GAME_TIME.delta;
+		rotation->x += angle * Game->TIME.delta;
 		break;
 	case Y:
-		rotation->y += angle * GAME_TIME.delta;
+		rotation->y += angle * Game->TIME.delta;
 		break;
 	case Z:
-		rotation->z += angle * GAME_TIME.delta;
+		rotation->z += angle * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -156,17 +158,17 @@ void Move::smoothRotateBy(AXIS axis, float angle, float speed){
 	{
 	case X:
 		m_rotX = true;
-		m_lerpRotX += speed * GAME_TIME.delta;
+		m_lerpRotX += speed * Game->TIME.delta;
 		rotation->x += lerp(0, angle, m_lerpRotX);
 		break;
 	case Y:
 		m_rotY = true;
-		m_lerpRotY += speed * GAME_TIME.delta;
+		m_lerpRotY += speed * Game->TIME.delta;
 		rotation->y += lerp(0, angle, m_lerpRotY);
 		break;
 	case Z:
 		m_rotZ = true;
-		m_lerpRotZ += speed * GAME_TIME.delta;
+		m_lerpRotZ += speed * Game->TIME.delta;
 		rotation->z += lerp(0, angle, m_lerpRotZ);
 		break;
 	default:

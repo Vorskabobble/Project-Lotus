@@ -2,12 +2,13 @@
 #include <iostream>
 #include <map>
 
-#include "utility.h"
+#include "GameInfo.h"
 #include "Scene.h"
 
 class SceneManager{
 private:
 	static SceneManager* single;
+	GameInfo* Game;
 	std::map<std::string, Scene*> m_scenes;
 	
 	Scene *m_curScene;

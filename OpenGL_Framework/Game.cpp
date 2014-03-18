@@ -31,11 +31,6 @@ void Game::Shutdown(){
 
 void Game::Update(){
 	timeControl->Update();
-	char s[250];
-	sprintf_s(s, "delta : %2.20f, current : %2.20f, last : %2.20f, FPS : %3.3f", GAME_TIME.delta, GAME_TIME.current, GAME_TIME.last, GAME_TIME.fps);
-	if (GAME_INPUT.keyPressed[VK_SPACE]){
-		DebugOut(s);
-	}
 	scene->update();
 }
 

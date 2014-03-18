@@ -1,11 +1,12 @@
 #pragma once
 #include "key_codes.h"
-#include "utility.h"
+#include "GameInfo.h"
 #include "InputInfo.h"
 
 class Input
 {
 private:
+	GameInfo* Game;
 public:
 	Input();
 	~Input();

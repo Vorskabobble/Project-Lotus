@@ -91,6 +91,7 @@
     <ClCompile Include="BFont.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameDirector.cpp" />
+    <ClCompile Include="GameInfo.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputAdapter.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputAdapter.h" />
     <ClInclude Include="key_codes.h" />
+    <ClInclude Include="MathFunctions.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="ObjCube.h" />
     <ClInclude Include="Object.h" />
@@ -125,7 +127,7 @@
     <ClInclude Include="Scene_Splash.h" />
     <ClInclude Include="TimeControl.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="utility.h" />
+    <ClInclude Include="GameInfo.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
