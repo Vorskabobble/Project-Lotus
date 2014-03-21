@@ -22,6 +22,10 @@ void Game::Initialise(){
 
 	timeControl = TimeControl::getInstance();
 	director = GameDirector::getInstance();
+
+	startScene = new Scene_Splash();
+	director->loadScene("splash", *startScene);
+	director->changeScene("splash");
 }
 
 void Game::Shutdown(){
@@ -38,8 +42,6 @@ void Game::Update(){
 void Game::Render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	gluLookAt(1.0f, 2.5f, 5.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-	scene->update();
 	scene->render();
 
 	glFlush();

@@ -15,6 +15,8 @@ using namespace std;
 #include "Object.h"
 #include "ObjCube.h"
 
+#include "Scene_Splash.h"
+
 // forward declaration
 class BaseObject;
 
@@ -34,6 +36,8 @@ private:
 	GameDirector* director;
 
 	vector<Object*> m_objects;
+
+	Scene_Splash* startScene;
 
 	// HERE WE DECLARE ANY GAME OBJECTS ("BASEOBJECTS") AND CREATE THEM
 	// IN THE INITIALISE METHOD

@@ -3,6 +3,7 @@
 Move::Move(){
 	position = new Vector(0.0f, 0.0f, 0.0f);
 	rotation = new Vector(0.0f, 0.0f, 0.0f);
+	target = new Vector(0.0f, 0.0f, 0.0f);
 	m_forward = new Vector(0.0f, 0.0f, 1.0f);
 	m_left = new Vector(1.0f, 0.0f, 0.0f);
 	m_up = new Vector(0.0f, 1.0f, 0.0f);
@@ -237,6 +238,10 @@ void Move::calculateLocalVectors(){
 	*m_up = m_forward->CrossProduct(*m_left);
 }
 
+void Move::setTargetDistance(float distance){
+	targetDis = distance;
+}
+
 void Move::Update(){
 	if (fCountw){
 		if (!m_moveX){
@@ -280,4 +285,6 @@ void Move::Update(){
 	m_rotX = false;
 	m_rotY = false;
 	m_rotZ = false;
+
+	*target = *position + (*m_forward * targetDis);
 }

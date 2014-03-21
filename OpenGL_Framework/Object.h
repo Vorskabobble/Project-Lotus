@@ -16,8 +16,6 @@ protected:
 
 	Color m_color;
 
-	Vector* m_pos;
-	Vector* m_angle;
 	Vector* m_verts;
 
 	Move* m_move;
@@ -37,8 +35,6 @@ public:
 
 	void setScale(float scale);
 	void setColor(Color color);
-	void setAngle(Vector angle);
-	void setPos(Vector pos);
 
 	Move* move();
 

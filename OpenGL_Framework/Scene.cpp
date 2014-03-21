@@ -3,9 +3,13 @@
 Scene::Scene(){
 	director = GameDirector::getInstance();
 	Game = GameInfo::getInstance();
+	mainCamera = new Camera();
 }
 
 Scene::~Scene(){
+	if (mainCamera){
+		delete mainCamera;
+	}
 }
 
 void Scene::addObject(Object* object){

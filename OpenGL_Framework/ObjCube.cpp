@@ -50,10 +50,10 @@ void ObjCube::Render(){
 	m_move->Update();
 	glPushMatrix();
 		glScalef(m_scale, m_scale, m_scale);
-		glTranslatef(m_pos->x, m_pos->y, m_pos->z);
-		glRotatef(m_angle->y, 0.0f, 1.0f, 0.0f);
-		glRotatef(m_angle->x, 1.0f, 0.0f, 0.0f);
-		glRotatef(m_angle->z, 0.0f, 0.0f, 1.0f);
+		glTranslatef(m_move->position->x, m_move->position->y, m_move->position->z);
+		glRotatef(m_move->rotation->y, 0.0f, 1.0f, 0.0f);
+		glRotatef(m_move->rotation->x, 1.0f, 0.0f, 0.0f);
+		glRotatef(m_move->rotation->z, 0.0f, 0.0f, 1.0f);
 		glColor3f(m_color.r, m_color.g, m_color.b);
 		drawFace(0, 4, 5, 1);
 		drawFace(3, 7, 4, 0);

@@ -57,10 +57,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>E:\_Work\Project-Lotus\UtilityDll;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>E:\_Work\Project-Lotus\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -87,8 +87,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AssimpLoader.cpp" />
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="BFont.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameDirector.cpp" />
     <ClCompile Include="GameInfo.cpp" />
@@ -98,6 +100,7 @@
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="ObjCube.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjModel.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -106,8 +109,10 @@
     <ClCompile Include="TimeControl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AssimpLoader.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="BFont.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="DebugPrint.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Color.h" />
@@ -119,6 +124,7 @@
     <ClInclude Include="Move.h" />
     <ClInclude Include="ObjCube.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjModel.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneAdapter.h" />

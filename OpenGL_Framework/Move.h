@@ -15,7 +15,10 @@ class Move{
 public:
 	Vector* position;
 	Vector* rotation;
+	Vector* target;
 private:
+	float targetDis;
+
 	//bools used for lerp functions for world movement
 	bool m_moveX, m_moveY, m_moveZ;
 	bool m_rotX, m_rotY, m_rotZ;
@@ -41,7 +44,6 @@ private:
 	GameInfo* Game;
 public:
 	Move();
-	Move(Vector& pos, Vector& angle);
 	~Move();
 
 	//Moves an object on world axis
@@ -65,6 +67,8 @@ public:
 	void smoothRotateTo(AXIS axis, float angle, float speed);
 
 	void calculateLocalVectors();
+
+	void setTargetDistance(float distance);
 
 	void Update();
 };

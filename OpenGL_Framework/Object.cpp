@@ -4,8 +4,6 @@
 Object::Object(){
 	m_scale = m_vertNum = 0;
 	m_color = COLOR_WHITE;
-	m_pos = NULL;
-	m_angle = NULL;
 	m_verts = NULL;
 	m_move = NULL;
 }
@@ -15,8 +13,6 @@ Object::Object(int vertNum, float scale){
 	m_scale = scale;
 
 	m_color = COLOR_WHITE;
-	m_pos = new Vector(0.0f, 0.0f, 0.0f);
-	m_angle = new Vector(0.0f, 0.0f, 0.0f);
 	m_verts = new Vector[m_vertNum];
 	m_move = new Move();
 }
@@ -41,15 +37,11 @@ Color Object::getColor() const{
 }
 
 Vector* Object::getAngle() const{
-	return m_angle;
+	return m_move->rotation;
 }
 
 Vector* Object::getPos() const{
-	return m_pos;
-}
-
-void Object::setAngle(Vector angle){
-	*m_angle = angle;
+	return m_move->position;
 }
 
 void Object::setScale(float scale){
@@ -60,19 +52,17 @@ void Object::setColor(Color color){
 	m_color = color;
 }
 
-void Object::setPos(Vector pos){
-	*m_pos = pos;
-}
-
 Move* Object::move(){
 	return m_move;
 }
 
 void Object::drawFace(int v0, int v1, int v2, int v3){
-	glBegin(GL_QUADS);
+	glBegin(GL_TRIANGLE_STRIP);
 		glVertex3f(m_verts[v0].x, m_verts[v0].y, m_verts[v0].z);
 		glVertex3f(m_verts[v1].x, m_verts[v1].y, m_verts[v1].z);
 		glVertex3f(m_verts[v2].x, m_verts[v2].y, m_verts[v2].z);
+		glVertex3f(m_verts[v2].x, m_verts[v2].y, m_verts[v2].z);
+		glVertex3f(m_verts[v0].x, m_verts[v0].y, m_verts[v0].z);
 		glVertex3f(m_verts[v3].x, m_verts[v3].y, m_verts[v3].z);
 	glEnd();
 }

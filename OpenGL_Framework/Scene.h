@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Object.h"
+#include "Camera.h"
 #include "GameDirector.h"
 #include "GameInfo.h"
 #include "key_codes.h"
@@ -12,6 +13,7 @@ private:
 protected:
 	GameDirector* director;
 	GameInfo* Game;
+	Camera* mainCamera;
 public:
 	Scene();
 	~Scene();
