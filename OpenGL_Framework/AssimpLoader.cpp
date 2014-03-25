@@ -1,4 +1,5 @@
 #include "AssimpLoader.h"
+#include "DebugPrint.h"
 
 AssimpLoader::AssimpLoader(){
 	numModels = 0;
@@ -56,27 +57,32 @@ void AssimpLoader::processModel(const aiMesh* mesh, MODEL& model){
 	model.UVCoords = new Vector[model.numVerts];
 	model.normals = new Vector[model.numVerts];
 	for (int i = 0; i < model.numVerts; i++){
-		model.vertices[i].x = mesh->mVertices->x;
-		model.vertices[i].y = mesh->mVertices->y;
-		model.vertices[i].z = mesh->mVertices->z;
+		model.vertices[i].x = mesh->mVertices[i].x;
+		model.vertices[i].y = mesh->mVertices[i].y;
+		model.vertices[i].z = mesh->mVertices[i].z;
+
+		char s[255];
+		sprintf_s(s, "Vertex %i; x = %2.2f; y = %2.2f; y = %2.2f", i, mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+
+		DebugOut(s);
 
 //		model.UVCoords[i].x = mesh->mTextureCoords[i]->x;
 //		model.UVCoords[i].y = mesh->mTextureCoords[i]->y;
 //		model.UVCoords[i].z = mesh->mTextureCoords[i]->z;
 
 		if (mesh->HasNormals()){
-			model.normals[i].x = mesh->mNormals->x;
-			model.normals[i].y = mesh->mNormals->y;
-			model.normals[i].z = mesh->mNormals->z;
+			model.normals[i].x = mesh->mNormals[i].x;
+			model.normals[i].y = mesh->mNormals[i].y;
+			model.normals[i].z = mesh->mNormals[i].z;
 		}
 	}
 	model.numTris = mesh->mNumFaces;
 	model.triangles = new FACE[model.numTris];
 	for (int i = 0; i < model.numTris; i++){
-		model.triangles[i].numIndices = mesh->mFaces->mNumIndices;
+		model.triangles[i].numIndices = mesh->mFaces[i].mNumIndices;
 		model.triangles[i].vertIndices = new int[model.triangles[i].numIndices];
 		for (int j = 0; j < model.triangles[i].numIndices; j++){
-			model.triangles[i].vertIndices[j] = mesh->mFaces->mIndices[j];
+			model.triangles[i].vertIndices[j] = mesh->mFaces[i].mIndices[j];
 		}
 	}
 }

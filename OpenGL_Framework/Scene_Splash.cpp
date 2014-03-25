@@ -12,8 +12,8 @@ Scene_Splash::~Scene_Splash(){
 
 void Scene_Splash::Initialise(){
 	cube = new ObjCube(0.7f);
-	cube->setColor(COLOR_WHITE);
-	*cube->move()->position = Vector(0.0f, 0.0f, 3.0f);
+	cube->setColor(COLOR_PURPLE);
+	*cube->move()->position = Vector(3.0f, 0.0f, 3.0f);
 	addObject(cube);
 
 	model = new ObjModel();
@@ -21,7 +21,7 @@ void Scene_Splash::Initialise(){
 	model->LoadModel("Models/TestCube.obj");
 
 	*model->move()->position = Vector(0.0f, 0.0f, 3.0f);
-	model->setScale(10.0f);
+	model->setScale(0.3f);
 
 	mainCamera->move->setTargetDistance(10.0f);
 }
@@ -32,6 +32,12 @@ void Scene_Splash::Update(){
 	}
 	if (Game->INPUT.keyPressed[VK_A]){
 		mainCamera->move->move(X, 1.0f);
+	}
+	if (Game->INPUT.keyPressed[VK_T]){
+		model->setScale(model->getScale() + (1.0f * Game->TIME.delta));
+	}
+	if (Game->INPUT.keyPressed[VK_G]){
+		model->setScale(model->getScale() - (1.0f * Game->TIME.delta));
 	}
 	if (Game->INPUT.keyPressed[VK_W]){
 		mainCamera->move->move(Z, 1.0f);
@@ -54,6 +60,6 @@ void Scene_Splash::Update(){
 
 void Scene_Splash::Render(){
 	mainCamera->Update();
-	//cube->Render();
+	cube->Render();
 	model->Render();
 }

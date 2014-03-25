@@ -36,23 +36,23 @@ bool ObjModel::LoadModel(const std::string& pFile){
 void ObjModel::Render(){
 	m_move->Update();
 	glPushMatrix();
-		glScalef(m_scale, m_scale, m_scale);
 		glTranslatef(m_move->position->x, m_move->position->y, m_move->position->z);
 		glRotatef(m_move->rotation->y, 0.0f, 1.0f, 0.0f);
 		glRotatef(m_move->rotation->x, 1.0f, 0.0f, 0.0f);
 		glRotatef(m_move->rotation->z, 0.0f, 0.0f, 1.0f);
+		glScalef(m_scale, m_scale, m_scale);
 		glColor3f(m_color.r, m_color.g, m_color.b);
-		/*for (int i = 0; i < model->numTris; i++){
-			glBegin(GL_LINE_LOOP);
+		for (int i = 0; i < model->numTris; i++){
+			glBegin(GL_TRIANGLES);
 				glVertex3f(model->vertices[model->triangles[i].vertIndices[0]].x, model->vertices[model->triangles[i].vertIndices[0]].y, model->vertices[model->triangles[i].vertIndices[0]].z);
 				glVertex3f(model->vertices[model->triangles[i].vertIndices[1]].x, model->vertices[model->triangles[i].vertIndices[1]].y, model->vertices[model->triangles[i].vertIndices[1]].z);
 				glVertex3f(model->vertices[model->triangles[i].vertIndices[2]].x, model->vertices[model->triangles[i].vertIndices[2]].y, model->vertices[model->triangles[i].vertIndices[2]].z);
 			glEnd();
-		}*/
-		glEnable(GL_VERTEX_ARRAY);
-			glVertexPointer(3, GL_FLOAT, 0, vertArray);
-			glDrawArrays(GL_POINTS, 0, model->numVerts);
-		glDisable(GL_VERTEX_ARRAY);
+		}
+		//glEnable(GL_VERTEX_ARRAY);
+		//	glVertexPointer(3, GL_FLOAT, 0, vertArray);
+		//	glDrawArrays(GL_TRIANGLES, 0, model->numVerts);
+		//glDisable(GL_VERTEX_ARRAY);
 	glPopMatrix();
 }
 

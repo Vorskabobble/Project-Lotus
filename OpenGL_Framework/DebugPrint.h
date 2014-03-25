@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include <Windows.h>
 using namespace std;
 
 static void DebugOut(const char *szOut){
