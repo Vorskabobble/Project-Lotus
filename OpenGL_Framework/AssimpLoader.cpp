@@ -60,19 +60,21 @@ void AssimpLoader::processModel(const aiMesh* mesh, MODEL& model){
 		model.vertices[i].y = mesh->mVertices->y;
 		model.vertices[i].z = mesh->mVertices->z;
 
-		model.UVCoords[i].x = mesh->mTextureCoords[i]->x;
-		model.UVCoords[i].y = mesh->mTextureCoords[i]->y;
-		model.UVCoords[i].z = mesh->mTextureCoords[i]->z;
+//		model.UVCoords[i].x = mesh->mTextureCoords[i]->x;
+//		model.UVCoords[i].y = mesh->mTextureCoords[i]->y;
+//		model.UVCoords[i].z = mesh->mTextureCoords[i]->z;
 
-		model.normals[i].x = mesh->mNormals->x;
-		model.normals[i].y = mesh->mNormals->y;
-		model.normals[i].z = mesh->mNormals->z;
+		if (mesh->HasNormals()){
+			model.normals[i].x = mesh->mNormals->x;
+			model.normals[i].y = mesh->mNormals->y;
+			model.normals[i].z = mesh->mNormals->z;
+		}
 	}
 	model.numTris = mesh->mNumFaces;
 	model.triangles = new FACE[model.numTris];
 	for (int i = 0; i < model.numTris; i++){
 		model.triangles[i].numIndices = mesh->mFaces->mNumIndices;
-		model.triangles[i].vertIndices = new float[model.triangles[i].numIndices];
+		model.triangles[i].vertIndices = new int[model.triangles[i].numIndices];
 		for (int j = 0; j < model.triangles[i].numIndices; j++){
 			model.triangles[i].vertIndices[j] = mesh->mFaces->mIndices[j];
 		}

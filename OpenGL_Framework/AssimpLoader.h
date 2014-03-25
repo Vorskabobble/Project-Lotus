@@ -1,3 +1,5 @@
+//Corey Bradford
+
 #pragma once
 
 #include "vector.h"
@@ -11,7 +13,7 @@
 
 typedef struct{
 	int numIndices;
-	float* vertIndices;
+	int* vertIndices;
 }FACE;
 
 typedef struct{

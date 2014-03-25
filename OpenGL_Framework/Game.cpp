@@ -26,6 +26,9 @@ void Game::Initialise(){
 	startScene = new Scene_Splash();
 	director->loadScene("splash", *startScene);
 	director->changeScene("splash");
+	char s[255];
+	sprintf(s, "Version : %s", glGetString(GL_VERSION));
+	DebugOut(s);
 }
 
 void Game::Shutdown(){

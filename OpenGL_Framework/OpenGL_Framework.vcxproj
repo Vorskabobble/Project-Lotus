@@ -57,7 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>E:\_Work\Project-Lotus\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>

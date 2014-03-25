@@ -66,3 +66,11 @@ void Object::drawFace(int v0, int v1, int v2, int v3){
 		glVertex3f(m_verts[v3].x, m_verts[v3].y, m_verts[v3].z);
 	glEnd();
 }
+
+void Object::drawTri(int v0, int v1, int v2){
+	glBegin(GL_TRIANGLES);
+		glVertex3f(m_verts[v0].x, m_verts[v0].y, m_verts[v0].z);
+		glVertex3f(m_verts[v1].x, m_verts[v1].y, m_verts[v1].z);
+		glVertex3f(m_verts[v2].x, m_verts[v2].y, m_verts[v2].z);
+	glEnd();
+}

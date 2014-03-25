@@ -1,17 +1,19 @@
 #pragma once
 #include "Object.h"
-
-#include "assimp\Importer.hpp"
-#include "assimp\scene.h"
-#include "assimp\postprocess.h"
+#include "AssimpLoader.h"
+#include "DebugPrint.h"
 
 class ObjModel : public Object{
+private:
+	MODEL* model;
+	float* vertArray;
 public:
 	ObjModel();
 	~ObjModel();
 
 	bool LoadModel(const std::string& pFile);
-private:
-	bool processModel(const aiScene* scene);
+	void Render();
+
+	void vertPos();
 };
 

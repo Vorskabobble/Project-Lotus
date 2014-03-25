@@ -39,6 +39,7 @@ public:
 	Move* move();
 
 	void drawFace(int v0, int v1, int v2, int v3);
+	void drawTri(int v0, int v1, int v2);
 
 	virtual void Render() = 0;
 };
