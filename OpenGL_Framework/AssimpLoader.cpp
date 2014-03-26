@@ -8,7 +8,7 @@ AssimpLoader::AssimpLoader(){
 
 AssimpLoader::~AssimpLoader(){
 	if (models){
-		delete models;
+		delete[] models;
 	}
 }
 
@@ -61,14 +61,11 @@ void AssimpLoader::processModel(const aiMesh* mesh, MODEL& model){
 		model.vertices[i].y = mesh->mVertices[i].y;
 		model.vertices[i].z = mesh->mVertices[i].z;
 
-		char s[255];
-		sprintf_s(s, "Vertex %i; x = %2.2f; y = %2.2f; y = %2.2f", i, mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
-
-		DebugOut(s);
-
-//		model.UVCoords[i].x = mesh->mTextureCoords[i]->x;
-//		model.UVCoords[i].y = mesh->mTextureCoords[i]->y;
-//		model.UVCoords[i].z = mesh->mTextureCoords[i]->z;
+		if (mesh->HasTextureCoords(0)){
+			model.UVCoords[i].x = mesh->mTextureCoords[i]->x;
+			model.UVCoords[i].y = mesh->mTextureCoords[i]->y;
+			model.UVCoords[i].z = mesh->mTextureCoords[i]->z;
+		}
 
 		if (mesh->HasNormals()){
 			model.normals[i].x = mesh->mNormals[i].x;

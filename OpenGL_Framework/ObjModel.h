@@ -5,6 +5,7 @@
 
 class ObjModel : public Object{
 private:
+	int numModels;
 	MODEL* model;
 	float* vertArray;
 public:

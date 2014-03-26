@@ -57,7 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -87,6 +87,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\UnitTest++\src\AssertException.cpp" />
+    <ClCompile Include="..\UnitTest++\src\Checks.cpp" />
+    <ClCompile Include="..\UnitTest++\src\CurrentTest.cpp" />
+    <ClCompile Include="..\UnitTest++\src\DeferredTestReporter.cpp" />
+    <ClCompile Include="..\UnitTest++\src\DeferredTestResult.cpp" />
+    <ClCompile Include="..\UnitTest++\src\MemoryOutStream.cpp" />
+    <ClCompile Include="..\UnitTest++\src\ReportAssert.cpp" />
+    <ClCompile Include="..\UnitTest++\src\Test.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TestDetails.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TestList.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TestReporter.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TestReporterStdout.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TestResults.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TestRunner.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TimeConstraint.cpp" />
+    <ClCompile Include="..\UnitTest++\src\TimeHelpers.cpp" />
+    <ClCompile Include="..\UnitTest++\src\XmlTestReporter.cpp" />
     <ClCompile Include="AssimpLoader.cpp" />
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="BFont.cpp" />
@@ -106,9 +123,38 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Scene_Splash.cpp" />
+    <ClCompile Include="TestAll.cpp" />
+    <ClCompile Include="TestGameDirector.cpp" />
+    <ClCompile Include="TestInput.cpp" />
+    <ClCompile Include="TestMove.cpp" />
+    <ClCompile Include="TestSceneManager.cpp" />
+    <ClCompile Include="TestTimeControl.cpp" />
     <ClCompile Include="TimeControl.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\UnitTest++\src\AssertException.h" />
+    <ClInclude Include="..\UnitTest++\src\CheckMacros.h" />
+    <ClInclude Include="..\UnitTest++\src\Checks.h" />
+    <ClInclude Include="..\UnitTest++\src\Config.h" />
+    <ClInclude Include="..\UnitTest++\src\CurrentTest.h" />
+    <ClInclude Include="..\UnitTest++\src\DeferredTestReporter.h" />
+    <ClInclude Include="..\UnitTest++\src\DeferredTestResult.h" />
+    <ClInclude Include="..\UnitTest++\src\ExecuteTest.h" />
+    <ClInclude Include="..\UnitTest++\src\MemoryOutStream.h" />
+    <ClInclude Include="..\UnitTest++\src\ReportAssert.h" />
+    <ClInclude Include="..\UnitTest++\src\Test.h" />
+    <ClInclude Include="..\UnitTest++\src\TestDetails.h" />
+    <ClInclude Include="..\UnitTest++\src\TestList.h" />
+    <ClInclude Include="..\UnitTest++\src\TestMacros.h" />
+    <ClInclude Include="..\UnitTest++\src\TestReporter.h" />
+    <ClInclude Include="..\UnitTest++\src\TestReporterStdout.h" />
+    <ClInclude Include="..\UnitTest++\src\TestResults.h" />
+    <ClInclude Include="..\UnitTest++\src\TestRunner.h" />
+    <ClInclude Include="..\UnitTest++\src\TestSuite.h" />
+    <ClInclude Include="..\UnitTest++\src\TimeConstraint.h" />
+    <ClInclude Include="..\UnitTest++\src\TimeHelpers.h" />
+    <ClInclude Include="..\UnitTest++\src\UnitTest++.h" />
+    <ClInclude Include="..\UnitTest++\src\XmlTestReporter.h" />
     <ClInclude Include="AssimpLoader.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="BFont.h" />
@@ -131,6 +177,7 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneMenu.h" />
     <ClInclude Include="Scene_Splash.h" />
+    <ClInclude Include="TestAll.h" />
     <ClInclude Include="TimeControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="GameInfo.h" />

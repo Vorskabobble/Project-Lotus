@@ -1,6 +1,5 @@
 #include "ObjCube.h"
 
-
 ObjCube::ObjCube(){
 	m_xSize = m_ySize = m_zSize = 0;
 }

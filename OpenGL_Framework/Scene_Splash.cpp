@@ -8,6 +8,9 @@ Scene_Splash::~Scene_Splash(){
 	if (cube){
 		delete cube;
 	}
+	if (menu){
+		delete menu;
+	}
 }
 
 void Scene_Splash::Initialise(){
@@ -18,7 +21,7 @@ void Scene_Splash::Initialise(){
 
 	model = new ObjModel();
 
-	model->LoadModel("Models/TestCube.obj");
+	model->LoadModel("Models/MultiObj.obj");
 
 	*model->move()->position = Vector(0.0f, 0.0f, 3.0f);
 	model->setScale(0.3f);
@@ -55,6 +58,16 @@ void Scene_Splash::Update(){
 		mainCamera->move->move(Y, -1.0f);
 		model->vertPos();
 		Game->INPUT.keyPressed[VK_F] = false;
+	}
+	if (Game->INPUT.keyPressed[VK_SPACE]){
+		Game->INPUT.keyPressed[VK_SPACE] = false;
+		menu = new SceneMenu;
+		director->loadScene("MenuScene", *menu);
+		director->changeScene("MenuScene");
+	}
+	if (Game->INPUT.keyPressed[VK_P]){
+		director->unloadScene("MenuScene");
+		delete menu;
 	}
 }
 

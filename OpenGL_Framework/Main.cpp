@@ -4,6 +4,8 @@
 #include "key_codes.h"
 #include <windowsx.h>
 
+#include "TestAll.h"
+
 // tell the compiler to always link into a Winmain, even if we are using a console app
 #pragma comment (linker, "/ENTRY:WinMainCRTStartup") 
 
@@ -20,6 +22,9 @@ we can easily switch to console output and print debug messages to the console.
 #else 
 	#pragma comment (linker, "/SUBSYSTEM:WINDOWS") 
 #endif 
+
+//uncomment this to run unit tests
+//#define RUN_TESTS = true;
 
 Game g_Game;	//Access to Game Object
 
@@ -107,6 +112,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			g_Game.Render();
 			g_Game.Swap();
 #endif
+#ifdef RUN_TESTS
+			TestAll TA;
+			TA.runAllTests();
+			done = true;
+#endif // !RUN_TESTS
+
 		}
 	}
 
