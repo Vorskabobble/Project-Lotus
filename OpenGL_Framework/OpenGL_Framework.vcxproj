@@ -57,7 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>D:\Temp\_Work\Project-Lotus\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Temp\_Work\Project-Lotus\Resil;D:\Temp\_Work\Project-Lotus\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;$(SolutionDir)/irrKlang/irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
