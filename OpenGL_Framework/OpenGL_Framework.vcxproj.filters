@@ -186,6 +186,9 @@
     <ClCompile Include="TestSceneManager.cpp">
       <Filter>UnitTest++</Filter>
     </ClCompile>
+    <ClCompile Include="SceneGame.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="..\UnitTest++\src\XmlTestReporter.h">
       <Filter>UnitTest++\UnitTest</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneGame.h">
+      <Filter>Header Files\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

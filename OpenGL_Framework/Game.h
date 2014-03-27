@@ -39,6 +39,8 @@ private:
 
 	Scene_Splash* startScene;
 
+	BFont* Text;
+
 	// HERE WE DECLARE ANY GAME OBJECTS ("BASEOBJECTS") AND CREATE THEM
 	// IN THE INITIALISE METHOD
 

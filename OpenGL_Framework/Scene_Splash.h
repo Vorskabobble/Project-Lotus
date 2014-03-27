@@ -7,9 +7,11 @@
 #include "SceneMenu.h"
 
 class Scene_Splash: public Scene{
-	ObjCube* cube;
+private:
 	ObjModel* model;
 	SceneMenu* menu;
+
+	float startTime;
 public:
 	Scene_Splash();
 	~Scene_Splash();

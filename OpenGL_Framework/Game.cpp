@@ -29,6 +29,7 @@ void Game::Initialise(){
 	startScene = new Scene_Splash();
 	director->loadScene("splash", *startScene);
 	director->changeScene("splash");
+	Text = new BFont(hDC, "Courier", 14);
 }
 
 void Game::Shutdown(){
@@ -46,6 +47,24 @@ void Game::Render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	scene->render();
+
+	Set2D();
+	if (director->getGameInfo("ShowDiff")){
+		char s[255];
+		sprintf(s, "Time : %4.4f ;", director->getGameInfo("Diff"));
+		Text->printString(-1, -1, s);
+		Text->printString(-1, 0.95f, "Corey Bradford - University of Bolton");
+	}
+	if (director->getGameInfo("Menu")){
+		Text->printString(-1, 0, "Press SPACE to start Game");
+	}
+	if (director->getGameInfo("Game")){
+		Text->printString(-1, -1, "Press B to buy a troop");
+		char s[255];
+		sprintf(s, "Health : %4.4f ;\nTroop : %4.4f ;\nScore : %4.4f ;", director->getGameInfo("Health"), director->getGameInfo("tHealth"), director->getGameInfo("Score"));
+		Text->printString(-1, 0.8, s);
+	}
+	Set3D();
 
 	glFlush();
 }

@@ -57,10 +57,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Temp\_Work\Project-Lotus\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;$(SolutionDir)/irrKlang/irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -120,6 +120,7 @@
     <ClCompile Include="ObjModel.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
+    <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Scene_Splash.cpp" />
@@ -174,6 +175,7 @@
     <ClInclude Include="random.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneAdapter.h" />
+    <ClInclude Include="SceneGame.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneMenu.h" />
     <ClInclude Include="Scene_Splash.h" />

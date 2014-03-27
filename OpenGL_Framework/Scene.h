@@ -6,6 +6,7 @@
 #include "GameDirector.h"
 #include "GameInfo.h"
 #include "key_codes.h"
+#include "BFont.h"
 
 class Scene{
 private:
