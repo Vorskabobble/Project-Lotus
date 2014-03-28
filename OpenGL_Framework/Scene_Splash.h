@@ -4,13 +4,15 @@
 #include "ObjCube.h"
 #include "ObjModel.h"
 
+#include <irrKlang.h>
+
 #include "SceneMenu.h"
 
 class Scene_Splash: public Scene{
 private:
 	ObjModel* model;
 	SceneMenu* menu;
-
+	ISoundEngine* sndEngine;
 	float startTime;
 public:
 	Scene_Splash();

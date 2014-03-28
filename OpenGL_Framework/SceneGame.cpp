@@ -30,9 +30,9 @@ void SceneGame::Initialise(){
 	mainCamera->move->position->set(5, 5, -10);
 
 	sndEngine = createIrrKlangDevice();
-	sndEngine->setSoundVolume(0.2f);
+	sndEngine->setSoundVolume(0.3f);
 
-	sndEngine->play2D("Sounds/Call to Adventure.mp3", true);
+	sndEngine->play2D("Sounds/The Descent.mp3", true);
 }
 
 void SceneGame::Update(){

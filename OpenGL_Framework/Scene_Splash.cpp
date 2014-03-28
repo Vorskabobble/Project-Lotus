@@ -23,11 +23,16 @@ void Scene_Splash::Initialise(){
 	mainCamera->move->setTargetDistance(10.0f);
 	startTime = Game->TIME.current;
 	director->setGameInfo("ShowDiff", 1.0f);
+	
+	sndEngine = createIrrKlangDevice();
+	sndEngine->setSoundVolume(0.3f);
+
+	sndEngine->play2D("Sounds/Discovery Hit.mp3");
 }
 
 void Scene_Splash::Update(){
 	model->move()->move(X, -0.6f);
-	if (Game->TIME.current > startTime + 10){
+	if (Game->TIME.current > startTime + 12){
 		menu = new SceneMenu;
 		director->loadScene("Menu", *menu);
 		director->changeScene("Menu");

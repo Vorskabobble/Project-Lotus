@@ -102,9 +102,6 @@
     <ClCompile Include="SceneMenu.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="TimeControl.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameInfo.cpp">
       <Filter>Source Files\Framework</Filter>
     </ClCompile>
@@ -113,9 +110,6 @@
     </ClCompile>
     <ClCompile Include="ObjModel.cpp">
       <Filter>Source Files\Framework\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="AssimpLoader.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TestAll.cpp">
       <Filter>UnitTest++</Filter>
@@ -189,6 +183,12 @@
     <ClCompile Include="SceneGame.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="AssimpLoader.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeControl.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h">
@@ -251,9 +251,6 @@
     <ClInclude Include="SceneMenu.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="TimeControl.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameInfo.h">
       <Filter>Header Files\Framework\Utility</Filter>
     </ClInclude>
@@ -265,9 +262,6 @@
     </ClInclude>
     <ClInclude Include="ObjModel.h">
       <Filter>Header Files\Framework\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="AssimpLoader.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TestAll.h">
       <Filter>UnitTest++\Header</Filter>
@@ -343,6 +337,12 @@
     </ClInclude>
     <ClInclude Include="SceneGame.h">
       <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="AssimpLoader.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeControl.h">
+      <Filter>Header Files\Framework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

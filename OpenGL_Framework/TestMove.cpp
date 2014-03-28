@@ -5,9 +5,9 @@ TEST(MoveTest){
 	Move M;
 	GameInfo* GI = GameInfo::getInstance();
 	GI->TIME.delta = 1.0f;
-	M.position = &Vector( 0.0f, 0.0f, 0.0f );
-	M.rotation = &Vector(0.0f, 0.0f, 0.0f);
-	M.target = &Vector(0.0f, 0.0f, 0.0f);
+	M.position->set( 0.0f, 0.0f, 0.0f );
+	M.rotation->set(0.0f, 0.0f, 0.0f);
+	M.target->set(0.0f, 0.0f, 0.0f);
 
 	M.move(X, 71.7f);
 	CHECK_EQUAL(71.7f, M.position->x);

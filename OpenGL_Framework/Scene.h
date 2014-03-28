@@ -17,7 +17,7 @@ protected:
 	Camera* mainCamera;
 public:
 	Scene();
-	~Scene();
+	virtual ~Scene();
 
 	void addObject(Object* object);
 	void removeObject(Object* object);

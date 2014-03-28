@@ -2,7 +2,7 @@
 
 
 SceneMenu::SceneMenu(){
-
+	cube = NULL;
 }
 
 SceneMenu::~SceneMenu(){
