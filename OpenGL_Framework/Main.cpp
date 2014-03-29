@@ -24,7 +24,7 @@ we can easily switch to console output and print debug messages to the console.
 #endif 
 
 //uncomment this to run unit tests
-#define RUN_TESTS = true;
+//#define RUN_TESTS = true;
 
 Game g_Game;	//Access to Game Object
 

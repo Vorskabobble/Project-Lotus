@@ -9,6 +9,8 @@ SceneManager::SceneManager(){
 
 SceneManager::~SceneManager(){
 	single = NULL;
+	m_curScene = NULL;
+	m_scenes.clear();
 }
 
 SceneManager* SceneManager::getInstance(){

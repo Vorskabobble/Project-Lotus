@@ -1,6 +1,5 @@
 #include "Scene_Splash.h"
 
-
 Scene_Splash::Scene_Splash(){
 }
 

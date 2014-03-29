@@ -6,9 +6,9 @@ Camera::Camera(){
 }
 
 Camera::~Camera(){
-	//if (move){
-	//	delete move;
-	//}
+	if (move){
+		delete move;
+	}
 }
 
 void Camera::Update(){

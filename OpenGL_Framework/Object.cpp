@@ -22,6 +22,9 @@ Object::~Object(){
 	if (m_verts){
 		delete[] m_verts;
 	}
+	if (m_move){
+		delete m_move;
+	}
 }
 
 int Object::getVertNum() const{
