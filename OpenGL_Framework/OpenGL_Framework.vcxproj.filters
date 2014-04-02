@@ -55,6 +55,24 @@
     <Filter Include="UnitTest++\UnitTest">
       <UniqueIdentifier>{64a3e4da-0af6-478b-a686-7e65365d0541}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Troops">
+      <UniqueIdentifier>{ed608280-1c49-436e-87d4-df1afee26285}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Troop">
+      <UniqueIdentifier>{5ff65484-3272-4e6e-b999-a4840626616f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Machine">
+      <UniqueIdentifier>{f41903c7-5dd4-464f-b5c8-c47ad12202f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Machine">
+      <UniqueIdentifier>{f1685791-e111-4b48-a3b4-b13638c5726b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Castle">
+      <UniqueIdentifier>{6913d841-e124-474e-9bdc-cceadf991a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Castle">
+      <UniqueIdentifier>{47fc98f1-c96e-4ddb-b171-cac41dd20fb1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -188,6 +206,27 @@
     </ClCompile>
     <ClCompile Include="TimeControl.cpp">
       <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTroop.cpp">
+      <Filter>Source Files\Troop</Filter>
+    </ClCompile>
+    <ClCompile Include="TroopCreator.cpp">
+      <Filter>Source Files\Troop</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMachine.cpp">
+      <Filter>Source Files\Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineCreator.cpp">
+      <Filter>Source Files\Machine</Filter>
+    </ClCompile>
+    <ClCompile Include="CastleLevel.cpp">
+      <Filter>Source Files\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineLevel.cpp">
+      <Filter>Source Files\Castle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -343,6 +382,27 @@
     </ClInclude>
     <ClInclude Include="TimeControl.h">
       <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTroop.h">
+      <Filter>Header Files\Troops</Filter>
+    </ClInclude>
+    <ClInclude Include="TroopCreator.h">
+      <Filter>Header Files\Troops</Filter>
+    </ClInclude>
+    <ClInclude Include="Stats.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMachine.h">
+      <Filter>Header Files\Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineCreator.h">
+      <Filter>Header Files\Machine</Filter>
+    </ClInclude>
+    <ClInclude Include="CastleLevel.h">
+      <Filter>Header Files\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineLevel.h">
+      <Filter>Header Files\Castle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include <irrKlang.h>
 #include "ObjCube.h"
+#include "TroopCreator.h"
 
 using namespace irrklang;
 
@@ -9,8 +10,10 @@ class SceneGame : public Scene{
 private:
 	int numEnemy;
 	ObjCube** enemy;
-	ObjCube* troop;
 	ObjCube* target;
+
+	TroopCreator creator;
+	PlayerTroop* player;
 
 	bool hasTroop;
 	ISoundEngine* sndEngine;
