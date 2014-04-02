@@ -1,7 +1,7 @@
 #include "SceneGame.h"
 
 SceneGame::SceneGame(){
-	troop = NULL;
+	player = NULL;
 	enemy = NULL;
 }
 
@@ -39,9 +39,9 @@ void SceneGame::Update(){
 	for (int i = 0; i < numEnemy; i++){
 		enemy[i]->move()->move(Z, -1.0f);
 		if (enemy[i]->getPos()->z < 0){
-			if (hasTroop && enemy[i]->getPos()->x > troop->getPos()->x - 2 && enemy[i]->getPos()->x < troop->getPos()->x + 2){
+			if (hasTroop && enemy[i]->getPos()->x > player->move()->position->x - 2 && enemy[i]->getPos()->x < player->move()->position->x + 2){
 				director->setGameInfo("Score", director->getGameInfo("Score") + 10);
-				director->setGameInfo("tHealth", director->getGameInfo("tHealth") - 5);
+				player->getStats()->setHealth(player->getStats()->getHealth() - 5);
 			}
 			else{
 				director->setGameInfo("Health", director->getGameInfo("Health") - 10);
@@ -50,17 +50,17 @@ void SceneGame::Update(){
 		}
 	}
 	if (Game->INPUT.keyPressed[VK_B]){
-		if (!hasTroop && !troop){
+		if (!hasTroop && !player){
 			hasTroop = true;
-			troop = new ObjCube(1.0f);
-			troop->setColor(COLOR_BLUE);
-			director->setGameInfo("tHealth", 10);
+			player = creator.CreateTroop(MILITIA);
+			player->move()->rotateTo(Y, 90);
 		}
 	}
-	if (director->getGameInfo("tHealth") <= 0){
-		if (troop){
-			delete troop;
-			troop = NULL;
+	if (player){
+		director->setGameInfo("tHealth", player->getStats()->getHealth());
+		if (player->getStats()->getHealth() <= 0){
+			delete player;
+			player = NULL;
 			hasTroop = false;
 		}
 	}
@@ -83,13 +83,17 @@ void SceneGame::Update(){
 		mainCamera->move->move(Y, -10.0f);
 	}
 	if (Game->INPUT.keyPressed[VK_Z]){
-		if (troop && troop->getPos()->x < 10){
-			troop->move()->move(X, 4.0f);
+		if (player){
+			if (player && player->move()->position->x < 10){
+				player->move()->move(X, 4.0f);
+			}
 		}
 	}
 	if (Game->INPUT.keyPressed[VK_X]){
-		if (troop && troop->getPos()->x > 0){
-			troop->move()->move(X, -4.0f);
+		if (player){
+			if (player && player->move()->position->x > 0){
+				player->move()->move(X, -4.0f);
+			}
 		}
 	}
 	if (director->getGameInfo("Health") <= 0){
@@ -102,8 +106,8 @@ void SceneGame::Render(){
 	for (int i = 0; i < numEnemy; i++){
 		enemy[i]->Render();
 	}
-	if (troop){
-		troop->Render();
+	if (player){
+		player->Render();
 	}
 	target->Render();
 }

@@ -57,7 +57,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <AdditionalIncludeDirectories>D:\Temp\_Work\Project-Lotus\Resil;D:\Temp\_Work\Project-Lotus\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Resil;$(SolutionDir)\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;$(SolutionDir)/irrKlang/irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -108,22 +108,28 @@
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="BFont.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CastleLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameDirector.cpp" />
     <ClCompile Include="GameInfo.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputAdapter.cpp" />
+    <ClCompile Include="MachineCreator.cpp" />
+    <ClCompile Include="MachineLevel.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="ObjCube.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ObjModel.cpp" />
+    <ClCompile Include="PlayerMachine.cpp" />
+    <ClCompile Include="PlayerTroop.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneAdapter.cpp" />
     <ClCompile Include="SceneGame.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SceneMenu.cpp" />
     <ClCompile Include="Scene_Splash.cpp" />
+    <ClCompile Include="Stats.cpp" />
     <ClCompile Include="TestAll.cpp" />
     <ClCompile Include="TestGameDirector.cpp" />
     <ClCompile Include="TestInput.cpp" />
@@ -131,6 +137,7 @@
     <ClCompile Include="TestSceneManager.cpp" />
     <ClCompile Include="TestTimeControl.cpp" />
     <ClCompile Include="TimeControl.cpp" />
+    <ClCompile Include="TroopCreator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\UnitTest++\src\AssertException.h" />
@@ -160,6 +167,7 @@
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="BFont.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CastleLevel.h" />
     <ClInclude Include="DebugPrint.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Color.h" />
@@ -167,11 +175,15 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputAdapter.h" />
     <ClInclude Include="key_codes.h" />
+    <ClInclude Include="MachineCreator.h" />
+    <ClInclude Include="MachineLevel.h" />
     <ClInclude Include="MathFunctions.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="ObjCube.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="ObjModel.h" />
+    <ClInclude Include="PlayerMachine.h" />
+    <ClInclude Include="PlayerTroop.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneAdapter.h" />
@@ -179,10 +191,12 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SceneMenu.h" />
     <ClInclude Include="Scene_Splash.h" />
+    <ClInclude Include="Stats.h" />
     <ClInclude Include="TestAll.h" />
     <ClInclude Include="TimeControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="GameInfo.h" />
+    <ClInclude Include="TroopCreator.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
