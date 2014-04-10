@@ -64,3 +64,9 @@ void PlayerMachine::Upgrade(float percent){
 	stats->setSpeed(stats->getSpeed() * percent);
 	stats->setLevel(stats->getLevel() + 1);
 }
+
+void PlayerMachine::Render(){
+	if (model){
+		model->Render();
+	}
+}

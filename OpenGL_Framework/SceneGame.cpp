@@ -3,9 +3,23 @@
 SceneGame::SceneGame(){
 	player = NULL;
 	enemy = NULL;
+	target = NULL;
 }
 
 SceneGame::~SceneGame(){
+	if (target){
+		delete target;
+	}
+	if (enemy){
+		for (int i = 0; i < numEnemy; i++){
+			delete enemy[i];
+			enemy[i] = NULL;
+		}
+		delete enemy;
+	}
+	GUIHandle->getWindow("base")->releaseElement("TestSlider");
+	GUIHandle->getWindow("base")->releaseElement("TestButton");
+	GUIHandle->getWindow("base")->releaseElement("HealthSlider");
 }
 
 void SceneGame::Initialise(){
@@ -32,16 +46,37 @@ void SceneGame::Initialise(){
 	sndEngine = createIrrKlangDevice();
 	sndEngine->setSoundVolume(0.3f);
 
+	GUIHandle->newElement(SLIDER, "TestSlider", 10, 10, 20, 500);
+	spawnButton = GUIHandle->newElement(BUTTON, "TestButton", 50, 50, 100, 30);
+	spawnButton->set3D(true);
+	spawnButton->setPosition(-1, 5, 0);
+	spawnButton->setText("Buy Troop");
+	playerHealth = GUIHandle->newElement(STATUS, "HealthSlider", 10, Game->SCREEN.height - 30, 500, 20);
+	playerHealth->set3D(true);
+	playerHealth->setPosition(10, -1, 0);
+	troopHealth = GUIHandle->newElement(STATUS, "troopHealth", 0, 0, 80, 10);
+	troopHealth->set3D(true);
+	troopHealth->setRender(false);
+//	troopHealth->setColor(COLOR_GREEN);
+
 	sndEngine->play2D("Sounds/The Descent.mp3", true);
 }
 
 void SceneGame::Update(){
+	float health = director->getGameInfo("Health") / 100;
+	playerHealth->getState()->state = health;
+
+	if (hasTroop){
+		troopHealth->setPosition(player->move()->position->x, 5, 0);
+		troopHealth->getState()->state = (float)player->getStats()->getHealth() / (float)player->getStats()->getMaxHealth();
+	}
+
 	for (int i = 0; i < numEnemy; i++){
 		enemy[i]->move()->move(Z, -1.0f);
 		if (enemy[i]->getPos()->z < 0){
 			if (hasTroop && enemy[i]->getPos()->x > player->move()->position->x - 2 && enemy[i]->getPos()->x < player->move()->position->x + 2){
 				director->setGameInfo("Score", director->getGameInfo("Score") + 10);
-				player->getStats()->setHealth(player->getStats()->getHealth() - 5);
+				player->DealDamage(5);
 			}
 			else{
 				director->setGameInfo("Health", director->getGameInfo("Health") - 10);
@@ -49,11 +84,12 @@ void SceneGame::Update(){
 			enemy[i]->move()->position->set(rand() % 10, 0.0f, 10.0f);
 		}
 	}
-	if (Game->INPUT.keyPressed[VK_B]){
+	if (spawnButton->getState()->used){
 		if (!hasTroop && !player){
 			hasTroop = true;
 			player = creator.CreateTroop(MILITIA);
 			player->move()->rotateTo(Y, 90);
+			troopHealth->setRender(true);
 		}
 	}
 	if (player){
@@ -62,6 +98,7 @@ void SceneGame::Update(){
 			delete player;
 			player = NULL;
 			hasTroop = false;
+			troopHealth->setRender(false);
 		}
 	}
 	if (Game->INPUT.keyPressed[VK_W]){

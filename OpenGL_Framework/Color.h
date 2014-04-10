@@ -1,5 +1,7 @@
+#pragma once
+
 #define COLOR_WHITE		 Color{1.0f, 1.0f, 1.0f, 1.0f}
-#define COLOR_GRAY		 Color(0.5f, 0.5f, 0.5f, 1.0f)
+#define COLOR_GRAY		 Color{0.5f, 0.5f, 0.5f, 1.0f}
 #define COLOR_BLACK		 Color{0.0f, 0.0f, 0.0f, 1.0f}
 #define COLOR_RED		 Color{1.0f, 0.0f, 0.0f, 1.0f}
 #define COLOR_GREEN		 Color{0.0f, 1.0f, 0.0f, 1.0f}

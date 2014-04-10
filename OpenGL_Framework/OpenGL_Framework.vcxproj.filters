@@ -46,15 +46,6 @@
     <Filter Include="Header Files\Framework\Utility">
       <UniqueIdentifier>{a807ed65-71ef-41d6-9154-72e37d0f0f95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="UnitTest++">
-      <UniqueIdentifier>{62d753f1-5dfb-4386-a162-27ee641acc73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UnitTest++\Header">
-      <UniqueIdentifier>{6871de73-4231-4600-8a39-adc18f6d3b1e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="UnitTest++\UnitTest">
-      <UniqueIdentifier>{64a3e4da-0af6-478b-a686-7e65365d0541}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Troops">
       <UniqueIdentifier>{ed608280-1c49-436e-87d4-df1afee26285}</UniqueIdentifier>
     </Filter>
@@ -72,6 +63,21 @@
     </Filter>
     <Filter Include="Source Files\Castle">
       <UniqueIdentifier>{47fc98f1-c96e-4ddb-b171-cac41dd20fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest++">
+      <UniqueIdentifier>{62d753f1-5dfb-4386-a162-27ee641acc73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest++\Header">
+      <UniqueIdentifier>{6871de73-4231-4600-8a39-adc18f6d3b1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UnitTest++\UnitTest">
+      <UniqueIdentifier>{64a3e4da-0af6-478b-a686-7e65365d0541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Framework\GUI">
+      <UniqueIdentifier>{706ea2eb-60b5-4083-b743-c2de27310135}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\GUI">
+      <UniqueIdentifier>{c224737a-f8bd-49b0-a150-a7c904f26623}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -227,6 +233,45 @@
     </ClCompile>
     <ClCompile Include="MachineLevel.cpp">
       <Filter>Source Files\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="BarracksLevel.cpp">
+      <Filter>Source Files\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="ThroneLevel.cpp">
+      <Filter>Source Files\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="Castle.cpp">
+      <Filter>Source Files\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIWindow.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Source Files\Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLoader.cpp">
+      <Filter>Source Files\Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIElement.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIElementCreator.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIButton.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIToggle.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUISlider.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIStatus.cpp">
+      <Filter>Source Files\Framework\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -403,6 +448,48 @@
     </ClInclude>
     <ClInclude Include="MachineLevel.h">
       <Filter>Header Files\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="BarracksLevel.h">
+      <Filter>Header Files\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="ThroneLevel.h">
+      <Filter>Header Files\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="Castle.h">
+      <Filter>Header Files\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIWindow.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
+      <Filter>Header Files\Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>Header Files\Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\Framework\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIElementCreator.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIElement.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIButton.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIToggle.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUISlider.h">
+      <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUIStatus.h">
+      <Filter>Header Files\Framework\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

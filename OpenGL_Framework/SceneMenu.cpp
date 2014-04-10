@@ -3,11 +3,15 @@
 
 SceneMenu::SceneMenu(){
 	cube = NULL;
+	game = NULL;
 }
 
 SceneMenu::~SceneMenu(){
 	if (cube){
 		delete cube;
+	}
+	if (game){
+		delete game;
 	}
 }
 

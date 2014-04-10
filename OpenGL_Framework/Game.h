@@ -11,6 +11,9 @@ using namespace std;
 
 #include "TimeControl.h"
 #include "GameDirector.h"
+#include "GameInfo.h"
+
+#include "GUI.h"
 
 #include "Object.h"
 #include "ObjCube.h"
@@ -34,12 +37,17 @@ private:
 
 	TimeControl* timeControl;
 	GameDirector* director;
+	GameInfo* GInfo;
+
+	GUI* GUIHandle;
 
 	vector<Object*> m_objects;
 
 	Scene_Splash* startScene;
 
 	BFont* Text;
+
+	float lightPos[4];
 
 	// HERE WE DECLARE ANY GAME OBJECTS ("BASEOBJECTS") AND CREATE THEM
 	// IN THE INITIALISE METHOD
@@ -80,4 +88,6 @@ public:
 	The main rendering method - renders a single frame
 	*/
 	void Game::Render();
+
+	void Render2D();
 };

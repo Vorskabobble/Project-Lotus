@@ -60,7 +60,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)\Resil;$(SolutionDir)\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;$(SolutionDir)/irrKlang/irrKlang.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;$(SolutionDir)/irrKlang/irrKlang.lib;$(SolutionDir)/Resil/DevIL.lib;$(SolutionDir)/Resil/ILU.lib;$(SolutionDir)/Resil/ILUT.lib;$(SolutionDir)/Resil/zlib1.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -105,18 +105,30 @@
     <ClCompile Include="..\UnitTest++\src\TimeHelpers.cpp" />
     <ClCompile Include="..\UnitTest++\src\XmlTestReporter.cpp" />
     <ClCompile Include="AssimpLoader.cpp" />
+    <ClCompile Include="BarracksLevel.cpp" />
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="BFont.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Castle.cpp" />
     <ClCompile Include="CastleLevel.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameDirector.cpp" />
     <ClCompile Include="GameInfo.cpp" />
+    <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="GUIButton.cpp" />
+    <ClCompile Include="GUIElement.cpp" />
+    <ClCompile Include="GUIElementCreator.cpp" />
+    <ClCompile Include="GUISlider.cpp" />
+    <ClCompile Include="GUIStatus.cpp" />
+    <ClCompile Include="GUIToggle.cpp" />
+    <ClCompile Include="GUIWindow.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="InputAdapter.cpp" />
     <ClCompile Include="MachineCreator.cpp" />
     <ClCompile Include="MachineLevel.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="ObjCube.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -136,6 +148,7 @@
     <ClCompile Include="TestMove.cpp" />
     <ClCompile Include="TestSceneManager.cpp" />
     <ClCompile Include="TestTimeControl.cpp" />
+    <ClCompile Include="ThroneLevel.cpp" />
     <ClCompile Include="TimeControl.cpp" />
     <ClCompile Include="TroopCreator.cpp" />
   </ItemGroup>
@@ -164,20 +177,33 @@
     <ClInclude Include="..\UnitTest++\src\UnitTest++.h" />
     <ClInclude Include="..\UnitTest++\src\XmlTestReporter.h" />
     <ClInclude Include="AssimpLoader.h" />
+    <ClInclude Include="BarracksLevel.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="BFont.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Castle.h" />
     <ClInclude Include="CastleLevel.h" />
     <ClInclude Include="DebugPrint.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="GameDirector.h" />
+    <ClInclude Include="GUI.h" />
+    <ClInclude Include="GUIButton.h" />
+    <ClInclude Include="GUIElement.h" />
+    <ClInclude Include="GUIElementCreator.h" />
+    <ClInclude Include="GUISlider.h" />
+    <ClInclude Include="GUIStatus.h" />
+    <ClInclude Include="GUIToggle.h" />
+    <ClInclude Include="GUIWindow.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="InputAdapter.h" />
     <ClInclude Include="key_codes.h" />
     <ClInclude Include="MachineCreator.h" />
     <ClInclude Include="MachineLevel.h" />
     <ClInclude Include="MathFunctions.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="ObjCube.h" />
     <ClInclude Include="Object.h" />
@@ -193,6 +219,7 @@
     <ClInclude Include="Scene_Splash.h" />
     <ClInclude Include="Stats.h" />
     <ClInclude Include="TestAll.h" />
+    <ClInclude Include="ThroneLevel.h" />
     <ClInclude Include="TimeControl.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="GameInfo.h" />

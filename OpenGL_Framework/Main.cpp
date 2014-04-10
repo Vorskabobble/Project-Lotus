@@ -26,6 +26,19 @@ we can easily switch to console output and print debug messages to the console.
 //uncomment this to run unit tests
 //#define RUN_TESTS = true;
 
+//uncomment to test for memory leaks
+//#define _CRTDBG_MAP_ALLOC
+
+// copy and paste into header files to get the line that the memory leak occurs
+/*
+	#ifdef _DEBUG
+	#ifndef DBG_NEW
+	#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+	#define new DBG_NEW
+	#endif
+	#endif  // _DEBUG
+*/
+
 Game g_Game;	//Access to Game Object
 
 
@@ -50,6 +63,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
 			break;
 		case WM_SIZE:
 			g_Game.Resize(LOWORD(lParam), HIWORD(lParam));
+			g_Game.GInfo->SCREEN.width = g_Game.m_width;
+			g_Game.GInfo->SCREEN.height = g_Game.m_height;
 			break;
 		case WM_MOUSEMOVE:
 			// Track the mouse position
@@ -127,6 +142,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 #endif
 	
 	g_Game.Shutdown();
+
+#ifdef _CRTDBG_MAP_ALLOC
+	_CrtDumpMemoryLeaks();
+#endif //!_CRTDBG_MAP_ALLOC
 
 	return msg.wParam;
 }

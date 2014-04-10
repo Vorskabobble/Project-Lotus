@@ -1,3 +1,5 @@
+//Corey Bradford, University of Bolton
+
 #pragma once
 
 static float lerp(float start, float end, float percent){

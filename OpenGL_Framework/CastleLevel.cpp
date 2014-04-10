@@ -4,6 +4,7 @@ CastleLevel::CastleLevel(){
 	gatePos = NULL;
 	gateMod = NULL;
 	model = NULL;
+	occupied = false;
 	Game = GameInfo::getInstance();
 }
 
@@ -43,7 +44,7 @@ void CastleLevel::LoadGate(const char* pFile){
 
 void CastleLevel::addMachPoint(std::string name, Vector point){
 	if (!points[name]){
-		POINT* t_point = new POINT{ point, false };
+		MACHPOINT* t_point = new MACHPOINT{ point, false };
 		points[name] = t_point;
 	}
 }
@@ -65,6 +66,10 @@ void CastleLevel::setRotation(Vector rotation){
 	if (model){
 		*model->move()->position = rotation;
 	}
+}
+
+bool CastleLevel::getOccupied(){
+	return occupied;
 }
 
 Vector CastleLevel::getPosition(){

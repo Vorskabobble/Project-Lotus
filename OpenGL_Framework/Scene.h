@@ -5,8 +5,7 @@
 #include "Camera.h"
 #include "GameDirector.h"
 #include "GameInfo.h"
-#include "key_codes.h"
-#include "BFont.h"
+#include "GUI.h"
 
 class Scene{
 private:
@@ -14,6 +13,7 @@ private:
 protected:
 	GameDirector* director;
 	GameInfo* Game;
+	GUI* GUIHandle;
 	Camera* mainCamera;
 public:
 	Scene();

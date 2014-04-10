@@ -23,5 +23,7 @@ public:
 	void DealDamage(int damage);
 	void LoadModel(const char* pFile);
 	void Upgrade(float percent);
+
+	void Render();
 };
 

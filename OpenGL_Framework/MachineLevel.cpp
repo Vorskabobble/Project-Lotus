@@ -36,4 +36,7 @@ void MachineLevel::Render(){
 	if (gateMod){
 		gateMod->Render();
 	}
+	for (auto& mach : machines){
+		mach.second->Render();
+	}
 }

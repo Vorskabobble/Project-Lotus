@@ -15,6 +15,10 @@ private:
 	TroopCreator creator;
 	PlayerTroop* player;
 
+	GUIElement* spawnButton;
+	GUIElement* playerHealth;
+	GUIElement* troopHealth;
+
 	bool hasTroop;
 	ISoundEngine* sndEngine;
 public:

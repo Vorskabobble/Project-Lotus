@@ -1,6 +1,9 @@
 #include "Scene_Splash.h"
 
 Scene_Splash::Scene_Splash(){
+	model = NULL;
+	menu = NULL;
+
 }
 
 Scene_Splash::~Scene_Splash(){
@@ -8,8 +11,13 @@ Scene_Splash::~Scene_Splash(){
 		delete model;
 	}
 	if (menu){
+		director->unloadScene("menu");
 		delete menu;
 	}
+	if (Game){
+		delete Game;
+	}
+	sndEngine->drop();
 }
 
 void Scene_Splash::Initialise(){
@@ -31,7 +39,9 @@ void Scene_Splash::Initialise(){
 
 void Scene_Splash::Update(){
 	model->move()->move(X, -0.6f);
-	if (Game->TIME.current > startTime + 12){
+	if (Game->TIME.current > startTime + 2){
+		delete model;
+		model = NULL;
 		menu = new SceneMenu;
 		director->loadScene("Menu", *menu);
 		director->changeScene("Menu");

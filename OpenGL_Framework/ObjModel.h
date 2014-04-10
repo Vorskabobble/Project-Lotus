@@ -5,8 +5,7 @@
 
 class ObjModel : public Object{
 private:
-	int numModels;
-	MODEL* model;
+	Model* model;
 	float* vertArray;
 public:
 	ObjModel();

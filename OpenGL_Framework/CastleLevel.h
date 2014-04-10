@@ -9,14 +9,16 @@
 typedef struct{
 	Vector point;
 	bool occupied;
-}POINT;
+}MACHPOINT;
 
 class CastleLevel{
 protected:
 	Vector* gatePos;
 	ObjModel* model;
 	ObjModel* gateMod;
-	map<std::string, POINT*> points;
+	map<std::string, MACHPOINT*> points;
+
+	bool occupied;
 
 	GameInfo* Game;
 public:
@@ -31,6 +33,8 @@ public:
 	void SetGatePosition(Vector point);
 	void setPosition(Vector position);
 	void setRotation(Vector rotation);
+
+	bool getOccupied();
 
 	Vector getPosition();
 	Vector getRotation();

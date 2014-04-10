@@ -3,6 +3,7 @@
 Scene::Scene(){
 	director = GameDirector::getInstance();
 	Game = GameInfo::getInstance();
+	GUIHandle = GUI::getInstance();
 	mainCamera = new Camera();
 }
 
