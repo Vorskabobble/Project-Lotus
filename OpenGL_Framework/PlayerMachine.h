@@ -1,29 +1,18 @@
 #pragma once
 
-#include "Stats.h"
-#include "ObjModel.h"
+#include "Object.h"
 
-class PlayerMachine{
+class PlayerMachine : public Object{
 private:
-	ObjModel* model;
-	Stats* stats;
 public:
 	PlayerMachine();
 	PlayerMachine(int health, int attack, int defence, int range, int speed);
 	~PlayerMachine();
 
-	Vector getPos();
-	Vector getRot();
-
-	Stats* getStats();
-
-	void setPos(Vector position);
-	void setRot(Vector rotation);
-
 	void DealDamage(int damage);
-	void LoadModel(const char* pFile);
 	void Upgrade(float percent);
 
-	void Render();
+	void localUpdate();
+	void localRender();
 };
 

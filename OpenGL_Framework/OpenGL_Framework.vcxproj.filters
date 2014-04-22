@@ -16,9 +16,6 @@
     <Filter Include="Source Files\Scenes">
       <UniqueIdentifier>{4ac95ac4-e69b-4089-b8ad-16881717d48b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Scene">
-      <UniqueIdentifier>{0073d81a-e439-4348-8ec5-391811090b33}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Framework">
       <UniqueIdentifier>{a4e839c5-8985-486d-ba10-f6181b99f853}</UniqueIdentifier>
     </Filter>
@@ -79,16 +76,25 @@
     <Filter Include="Source Files\Framework\GUI">
       <UniqueIdentifier>{c224737a-f8bd-49b0-a150-a7c904f26623}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Framework\Collision">
+      <UniqueIdentifier>{cf66c07d-f45f-4e26-a390-a0ee4616de4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Framework\Collision">
+      <UniqueIdentifier>{05764d9d-71cd-42a9-9ca8-e9bb9fd809d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{0073d81a-e439-4348-8ec5-391811090b33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects">
+      <UniqueIdentifier>{4648b806-cdbf-4a85-883b-23d9fea89324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects">
+      <UniqueIdentifier>{66654c0a-369e-4fa8-98a9-2521c8d5a4a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files\Framework\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjCube.cpp">
-      <Filter>Source Files\Framework\Objects</Filter>
     </ClCompile>
     <ClCompile Include="InputAdapter.cpp">
       <Filter>Source Files\Framework\Adapters</Filter>
@@ -131,9 +137,6 @@
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files\Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjModel.cpp">
-      <Filter>Source Files\Framework\Objects</Filter>
     </ClCompile>
     <ClCompile Include="TestAll.cpp">
       <Filter>UnitTest++</Filter>
@@ -219,9 +222,6 @@
     <ClCompile Include="TroopCreator.cpp">
       <Filter>Source Files\Troop</Filter>
     </ClCompile>
-    <ClCompile Include="Stats.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerMachine.cpp">
       <Filter>Source Files\Machine</Filter>
     </ClCompile>
@@ -273,12 +273,42 @@
     <ClCompile Include="GUIStatus.cpp">
       <Filter>Source Files\Framework\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="Collider.cpp">
+      <Filter>Source Files\Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionEngine.cpp">
+      <Filter>Source Files\Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionTree.cpp">
+      <Filter>Source Files\Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionPart.cpp">
+      <Filter>Source Files\Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadTextures.cpp">
+      <Filter>Source Files\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallCastle.cpp">
+      <Filter>Source Files\Castle</Filter>
+    </ClCompile>
+    <ClCompile Include="objGate.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files\Framework\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="objThrone.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h">
-      <Filter>Header Files\Framework\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjCube.h">
       <Filter>Header Files\Framework\Objects</Filter>
     </ClInclude>
     <ClInclude Include="InputAdapter.h">
@@ -306,7 +336,7 @@
       <Filter>Header Files\Framework\Adapters</Filter>
     </ClInclude>
     <ClInclude Include="Scene_Splash.h">
-      <Filter>Header Files\Scene</Filter>
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="DebugPrint.h">
       <Filter>Header Files\Framework\Utility</Filter>
@@ -333,7 +363,7 @@
       <Filter>Header Files\Framework</Filter>
     </ClInclude>
     <ClInclude Include="SceneMenu.h">
-      <Filter>Header Files\Scene</Filter>
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="GameInfo.h">
       <Filter>Header Files\Framework\Utility</Filter>
@@ -343,9 +373,6 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>Header Files\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjModel.h">
-      <Filter>Header Files\Framework\Objects</Filter>
     </ClInclude>
     <ClInclude Include="TestAll.h">
       <Filter>UnitTest++\Header</Filter>
@@ -420,7 +447,7 @@
       <Filter>UnitTest++\UnitTest</Filter>
     </ClInclude>
     <ClInclude Include="SceneGame.h">
-      <Filter>Header Files\Scene</Filter>
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="AssimpLoader.h">
       <Filter>Header Files\Framework</Filter>
@@ -490,6 +517,33 @@
     </ClInclude>
     <ClInclude Include="GUIStatus.h">
       <Filter>Header Files\Framework\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Collider.h">
+      <Filter>Header Files\Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionEngine.h">
+      <Filter>Header Files\Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionTree.h">
+      <Filter>Header Files\Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionPart.h">
+      <Filter>Header Files\Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadTextures.h">
+      <Filter>Header Files\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallCastle.h">
+      <Filter>Header Files\Castle</Filter>
+    </ClInclude>
+    <ClInclude Include="objGate.h">
+      <Filter>Header Files\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="objThrone.h">
+      <Filter>Header Files\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

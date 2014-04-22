@@ -50,24 +50,11 @@ void GUISlider::lRender(){
 		t_pos.z = m_z;
 	}
 	if (m_w > m_h){
-		float t_x = m_x + (m_w * state->state);
-		toggleRender(t_x, t_pos.y, 10, m_h);
+		float t_x = t_pos.x + (m_w * state->state);
+		boxRender(t_x, t_pos.y, 10, m_h, m_subColor);
 	}
 	else{
-		float t_y = m_y + (m_h * state->state);
-		toggleRender(t_pos.x, t_y, m_w, 10);
+		float t_y = t_pos.y + (m_h * state->state);
+		boxRender(t_pos.x, t_y, m_w, 10, m_subColor);
 	}
-}
-
-void GUISlider::toggleRender(int x, int y, int w, int h){
-	glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glColor4f(COLOR_BLUE.r, COLOR_BLUE.g, COLOR_BLUE.b, COLOR_BLUE.a);
-		glBegin(GL_QUADS);
-			glVertex2f(x, y);
-			glVertex2f(x, y + h);
-			glVertex2f(x + w, y + h);
-			glVertex2f(x + w, y);
-		glEnd();
-	glDisable(GL_BLEND);
 }

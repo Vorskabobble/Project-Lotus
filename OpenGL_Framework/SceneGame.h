@@ -1,26 +1,10 @@
 #pragma once
 #include "Scene.h"
-#include <irrKlang.h>
-#include "ObjCube.h"
-#include "TroopCreator.h"
-
-using namespace irrklang;
+#include "SmallCastle.h"
 
 class SceneGame : public Scene{
 private:
-	int numEnemy;
-	ObjCube** enemy;
-	ObjCube* target;
-
-	TroopCreator creator;
-	PlayerTroop* player;
-
-	GUIElement* spawnButton;
-	GUIElement* playerHealth;
-	GUIElement* troopHealth;
-
-	bool hasTroop;
-	ISoundEngine* sndEngine;
+	SmallCastle* castle;
 public:
 	SceneGame();
 	~SceneGame();

@@ -13,9 +13,10 @@ ModelLoader::~ModelLoader(){
 bool ModelLoader::LoadModel(std::string name, const char* pFile){
 	AssimpLoader loader;
 	if (!models[name]){
-		loader.loadScene(pFile);
-		*models[name] = *loader.getModel();
-		return true;
+		if (loader.loadScene(pFile)){
+			models[name] = new Model(*loader.getModel());
+			return true;
+		}
 	}
 	return false;
 }

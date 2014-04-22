@@ -15,9 +15,6 @@ using namespace std;
 
 #include "GUI.h"
 
-#include "Object.h"
-#include "ObjCube.h"
-
 #include "Scene_Splash.h"
 
 // forward declaration
@@ -40,8 +37,6 @@ private:
 	GameInfo* GInfo;
 
 	GUI* GUIHandle;
-
-	vector<Object*> m_objects;
 
 	Scene_Splash* startScene;
 

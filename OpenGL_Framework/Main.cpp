@@ -63,8 +63,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
 			break;
 		case WM_SIZE:
 			g_Game.Resize(LOWORD(lParam), HIWORD(lParam));
-			g_Game.GInfo->SCREEN.width = g_Game.m_width;
-			g_Game.GInfo->SCREEN.height = g_Game.m_height;
+			if (g_Game.GInfo){
+				g_Game.GInfo->SCREEN.width = g_Game.m_width;
+				g_Game.GInfo->SCREEN.height = g_Game.m_height;
+			}
 			break;
 		case WM_MOUSEMOVE:
 			// Track the mouse position

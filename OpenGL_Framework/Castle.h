@@ -4,11 +4,17 @@
 #include "BarracksLevel.h"
 #include "ThroneLevel.h"
 
+#include "ModelLoader.h"
+#include "CollisionEngine.h"
+
 class Castle{
+protected:
+	std::map<std::string, CastleLevel*> levels;
+
+	ModelLoader* loader;
+	CollisionEngine* collision;
 private:
-	CastleLevel* throne;
-	CastleLevel* barracks;
-	map<std::string, CastleLevel*> levels;
+	bool defeated;
 public:
 	Castle();
 	~Castle();
@@ -20,4 +26,3 @@ public:
 	void Update();
 	void Render();
 };
-

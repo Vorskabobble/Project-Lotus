@@ -8,7 +8,8 @@ GUIElement::GUIElement(){
 	is3D = false;
 	canRender = true;
 	elementText = "";
-	m_color = COLOR_ORANGE;
+	m_color = COLOR_GRAY;
+	m_subColor = COLOR_WHITE;
 	m_x = m_y = m_z = m_w = m_h = 0;
 
 	Text = new BFont(Game->SCREEN.hDC, "Courier", 12);
@@ -20,9 +21,6 @@ GUIElement::~GUIElement(){
 	}
 	if (Text){
 		delete Text;
-	}
-	if (elementText){
-//		delete elementText;
 	}
 }
 
@@ -46,7 +44,7 @@ void GUIElement::setFont(int size, char* font){
 	Text->setColor(COLOR_WHITE.r, COLOR_WHITE.g, COLOR_WHITE.b);
 }
 
-void GUIElement::setText(char* text){
+void GUIElement::setText(std::string text){
 	elementText = text;
 }
 
@@ -63,6 +61,10 @@ void GUIElement::setDimensions(int pixelW, int pixelH){
 
 void GUIElement::setColor(Color color){
 	m_color = color;
+}
+
+void GUIElement::setSubColor(Color color){
+	m_subColor = color;
 }
 
 GUIState* GUIElement::getState(){
@@ -82,22 +84,24 @@ void GUIElement::Render(){
 		}
 
 		if (t_pos.z > 0  && t_pos.z <= 1){
-			glEnable(GL_BLEND);
-				glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-				glColor4f(m_color.r, m_color.g, m_color.b, m_color.a);
-				glBegin(GL_QUADS);
-					glVertex2f(t_pos.x, t_pos.y);
-					glVertex2f(t_pos.x, t_pos.y + m_h);
-					glVertex2f(t_pos.x + m_w, t_pos.y + m_h);
-					glVertex2f(t_pos.x + m_w, t_pos.y);
-				glEnd();
-			glDisable(GL_BLEND);
-
-			Text->printString(t_pos.x, t_pos.y + 12, elementText);
-			
+			boxRender(t_pos.x, t_pos.y, m_w, m_h, m_color);
+			Text->printString(t_pos.x, t_pos.y + 12, (char*)elementText.c_str());	
 			lRender();
 		}
 	}
+}
+
+void GUIElement::boxRender(int x, int y, int w, int h, Color color){
+	glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glColor4f(color.r, color.g, color.b, color.a);
+		glBegin(GL_QUADS);
+			glVertex2f(x, y);
+			glVertex2f(x, y + h);
+			glVertex2f(x + w, y + h);
+			glVertex2f(x + w, y);
+		glEnd();
+	glDisable(GL_BLEND);
 }
 
 vector3 GUIElement::worldToScreen(){

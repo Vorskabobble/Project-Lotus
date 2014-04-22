@@ -10,14 +10,16 @@ private:
 	TroopCreator* creator;
 	vector<PlayerTroop*> troops;
 public:
-	BarracksLevel();
+	BarracksLevel(std::string name);
 	~BarracksLevel();
 	
 	void setSpawn(Vector position);
 	
 	Vector getSpawn();
 
-	void Render();
-	void Update();
+	void localUpdate();
+	void localRender();
+private:
+	void removeTroop(PlayerTroop* troop);
 };
 

@@ -48,6 +48,9 @@ GUIWindow* GUI::newWindow(std::string ID, int x, int y, int width, int height){
 		t_window = new GUIWindow();
 		windows[ID] = t_window;
 	}
+	else{
+		t_window = windows[ID];
+	}
 	return t_window;
 }
 

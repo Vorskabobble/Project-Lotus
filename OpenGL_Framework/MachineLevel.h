@@ -6,15 +6,13 @@
 class MachineLevel : public CastleLevel{
 private:
 	int m_health;
-	int m_gateHealth;
 
 	MachineCreator* creator;
 	map<std::string, PlayerMachine*> machines;
 public:
-	MachineLevel();
+	MachineLevel(std::string name);
 	~MachineLevel();
 
-	void Update();
-	void Render();
+	void localUpdate();
+	void localRender();
 };
-

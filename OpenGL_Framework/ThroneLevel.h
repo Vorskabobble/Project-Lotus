@@ -4,15 +4,16 @@
 
 class ThroneLevel : public CastleLevel{
 private:
-	ObjModel* throne;
-	TroopCreator* creator;
+	Object* throne;
+	PlayerTroop* kingsGaurd;
+	GUIElement* troopHealth;
 public:
-	ThroneLevel();
+	ThroneLevel(std::string name);
 	~ThroneLevel();
 
-	void LoadThrone(const char* pFile);
+	void setThrone(Object* obj);
 
-	void Update();
-	void Render();
+	void localUpdate();
+	void localRender();
 };
 

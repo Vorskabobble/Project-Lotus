@@ -34,21 +34,20 @@ void Game::Initialise(){
 	GInfo->SCREEN.height = m_height;
 	GInfo->SCREEN.hDC = hDC;
 
-	lightPos[0] = -5; lightPos[1] = 5; lightPos[2] = 0; lightPos[3] = 1.0f;
-	float whiteLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	float ambLight[] = { 0.1f, 0.1f, 0.1f, 1.0f };
-	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteLight);
-	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteLight);
-	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambLight);
+	//lightPos[0] = 0; lightPos[1] = 1; lightPos[2] = 5; lightPos[3] = 1.0f;
+	//float whiteLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	//float ambLight[] = { 0.1f, 0.1f, 0.1f, 1.0f };
+	//glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+	//glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteLight);
+	//glLightfv(GL_LIGHT0, GL_SPECULAR, whiteLight);
+	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambLight);
 
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
 }
 
 void Game::Shutdown(){
 	DebugOut("Game::Shutdown being called");
-	m_objects.clear();
 
 	if (startScene){
 		director->unloadScene("splash");
@@ -76,6 +75,7 @@ void Game::Shutdown(){
 
 void Game::Update(){
 	timeControl->Update();
+
 	scene->update();
 	GUIHandle->Update();
 }
@@ -84,6 +84,11 @@ void Game::Update(){
 void Game::Render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
+//	glEnable(GL_LIGHTING);
+//	glEnable(GL_LIGHT0);
+	glDisable(GL_LIGHTING);
+	glDisable(GL_LIGHT0);
+
 	scene->render();
 
 	glGetIntegerv(GL_VIEWPORT, GInfo->GL.viewport);
@@ -96,14 +101,13 @@ void Game::Render(){
 }
 
 void Game::Render2D(){
-	glDisable(GL_LIGHTING);
-	glDisable(GL_LIGHT0);
 	// Change to 2D view and use 1:1 pixel resolution with
 	// [0,0] origin being at the top-left corner.
 	Set2D(0, m_width, m_height, 0);
 	// Disable depth testing so the HUD will not be hidden
 	// by the 3D graphics
 	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
 //#####################################
 	
 	if (director->getGameInfo("ShowDiff")){
@@ -128,9 +132,7 @@ void Game::Render2D(){
 	GUIHandle->Render();
 
 //#####################################
-	glEnable(GL_LIGHTING);
-	glEnable(GL_LIGHT0);
-
+	
 	// Set back to 3D
 	Set3D();
 }

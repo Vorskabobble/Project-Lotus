@@ -20,7 +20,7 @@ public:
 	GUIElement* newElement(GUITYPE type, std::string ID, int x, int y, int width, int height, std::string WinID = "base");
 	GUIWindow* newWindow(std::string ID, int x, int y, int width, int height);
 
-	GUIWindow* getWindow(std::string ID);
+	GUIWindow* getWindow(std::string ID = "base");
 
 	void ReleaseWindow(std::string ID);
 

@@ -12,12 +12,11 @@
 enum AXIS {X = 0, Y, Z};
 
 class Move{
-public:
-	Vector* position;
-	Vector* rotation;
-	Vector* target;
 private:
 	float targetDis;
+
+	bool physicsEnabled;
+	float m_gravity;
 
 	//bools used for lerp functions for world movement
 	bool m_moveX, m_moveY, m_moveZ;
@@ -36,15 +35,35 @@ private:
 	//frame counts so smooth movement doesn't keep resetting
 	int fCountw, fCountl, fCountrw;
 
+	//Translation vectors
+	Vector position;
+	Vector rotation;
+	Vector target;
+
+	Vector velocity;
+	Vector lvelocity;
+
 	//Forward vector of the object
-	Vector* m_forward;
-	Vector* m_left;
-	Vector* m_up;
+	Vector m_forward;
+	Vector m_left;
+	Vector m_up;
 
 	GameInfo* Game;
 public:
 	Move();
 	~Move();
+
+	//Retrive position, can be used for setting
+	Vector& getPosition();
+	//Retrive rotation, can be used for setting
+	Vector& getRotation();
+	//Retrive target based on forward vector
+	Vector getTarget() const;
+
+	Vector& getVelocity();
+
+	void enablePhysics(bool enabled);
+	void setGravity(float gravity);
 
 	//Moves an object on world axis
 	void move(AXIS axis, float speed);

@@ -1,15 +1,12 @@
 #include "Castle.h"
 
 Castle::Castle(){
+	loader = new ModelLoader();
+	collision = new CollisionEngine();
+	defeated = false;
 }
 
 Castle::~Castle(){
-	if (throne){
-		delete throne;
-	}
-	if (barracks){
-		delete barracks;
-	}
 	for (auto& level : levels){
 		delete level.second;
 	}
@@ -17,20 +14,21 @@ Castle::~Castle(){
 }
 
 bool Castle::Defeated(){
-	return throne->getOccupied();
+	return defeated;
 }
 
 void Castle::Update(){
-	throne->Update();
-	barracks->Update();
 	for (auto& level : levels){
 		level.second->Update();
+		if (level.second->getName() == "throneLevel"){
+			if (level.second->getOccupied() == true){
+				defeated = true;
+			}
+		}
 	}
 }
 
 void Castle::Render(){
-	throne->Render();
-	barracks->Render();
 	for (auto& level : levels){
 		level.second->Render();
 	}

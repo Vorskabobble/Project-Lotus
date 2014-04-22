@@ -7,7 +7,5 @@ public:
 
 	bool Update();
 	void lRender();
-private:
-	void barRender(int x, int y, int w, int h);
 };
 

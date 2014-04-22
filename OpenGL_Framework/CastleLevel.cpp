@@ -1,70 +1,79 @@
 #include "CastleLevel.h"
 
-CastleLevel::CastleLevel(){
-	gatePos = NULL;
+CastleLevel::CastleLevel(std::string uniqueName){
 	gateMod = NULL;
 	model = NULL;
 	occupied = false;
 	Game = GameInfo::getInstance();
+	guiHandle = GUI::getInstance();
+
+	name = uniqueName;
+	
+	guiHandle->newWindow(name, 0, 0, 100, 100);
+	gateHealth = guiHandle->newElement(STATUS, "gateHealth", 0, 0, 100, 10, name);
+	gateHealth->set3D(true);
+	gateHealth->setRender(false);
 }
 
 CastleLevel::~CastleLevel(){
-	if (gatePos){
-		delete gatePos;
-	}
-	if (gateMod){
-		delete gateMod;
-	}
-	if (model){
-		delete model;
-	}
+	gateHealth = NULL;
+	guiHandle->ReleaseWindow(name);
+
 	for (auto& point : points){
 		delete point.second;
+		point.second = NULL;
 	}
 	points.clear();
-}
 
-void CastleLevel::LoadModel(const char* pFile){
 	if (model){
 		delete model;
-		model = NULL;
 	}
-	model = new ObjModel();
-	model->LoadModel(pFile);
-}
-
-void CastleLevel::LoadGate(const char* pFile){
 	if (gateMod){
 		delete gateMod;
-		gateMod = NULL;
 	}
-	gateMod = new ObjModel();
-	gateMod->LoadModel(pFile);
 }
 
-void CastleLevel::addMachPoint(std::string name, Vector point){
+void CastleLevel::setModel(Object* level){
+	if (model){
+		delete model;
+	}
+	model = new Object(*level);
+}
+
+void CastleLevel::setGate(Object* gate){
+	if (gateMod){
+		delete gateMod;
+	}
+	gateMod = new Object(*gate);
+	gateHealth->setPosition(gateMod->getMove()->getPosition().x, gateMod->getMove()->getPosition().y, gateMod->getMove()->getPosition().z);
+	gateHealth->setRender(true);
+}
+
+void CastleLevel::addMachPoint(std::string name, Collider* collider){
 	if (!points[name]){
-		MACHPOINT* t_point = new MACHPOINT{ point, false };
-		points[name] = t_point;
-	}
-}
+		points[name] = collider;
+		hasMachine[name] = false;
+		GUIElement* temp;
+		temp = guiHandle->newElement(STATUS, name, 0, 0, 100, 10, name);
+		temp->set3D(true);
+		temp->setPosition(collider->getPosition().x, collider->getPosition().y, collider->getPosition().z);
+		temp->setRender(false);
 
-void CastleLevel::SetGatePosition(Vector point){
-	if (!gatePos){
-		gatePos = new Vector;
 	}
-	*gatePos = point;
 }
 
 void CastleLevel::setPosition(Vector position){
 	if (model){
-		*model->move()->position = position;
+		model->getMove()->getPosition().set(position.x, position.y, position.z);
+	}
+	if (gateMod){
+		gateMod->getMove()->getPosition().set(position.x, position.y, position.z);
 	}
 }
 
 void CastleLevel::setRotation(Vector rotation){
 	if (model){
-		*model->move()->position = rotation;
+		model->getMove()->getRotation().set(rotation.x, rotation.y, rotation.z);
 	}
 }
 
@@ -72,10 +81,44 @@ bool CastleLevel::getOccupied(){
 	return occupied;
 }
 
+std::string CastleLevel::getName(){
+	return name;
+}
+
 Vector CastleLevel::getPosition(){
-	return *model->getPos();
+	return model->getMove()->getPosition();
 }
 
 Vector CastleLevel::getRotation(){
-	return *model->move()->rotation;
+	return model->getMove()->getRotation();
+}
+
+void CastleLevel::Update(){
+	for (auto& collider : points){
+		if (hasMachine[collider.first]){
+			guiHandle->getWindow(name)->getElement(collider.first)->setRender(true);
+			guiHandle->getWindow(name)->getElement(collider.first)->getState()->state = collider.second->getAttachedObject()->getStats()->getHealth() / collider.second->getAttachedObject()->getStats()->getMaxHealth();
+		}
+		else{
+			guiHandle->getWindow(name)->getElement(collider.first)->setRender(false);
+		}
+	}
+	if (gateMod){
+		gateHealth->getState()->state = gateMod->getStats()->getHealth() / gateMod->getStats()->getMaxHealth();
+	}
+	if (gateMod->getStats()->getHealth() <= 0){
+		gateHealth->setRender(false);
+	}
+
+	localUpdate();
+}
+
+void CastleLevel::Render(){
+	if (model){
+		model->Render();
+	}
+	if (gateMod){
+		gateMod->Render();
+	}
+	localRender();
 }

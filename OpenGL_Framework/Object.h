@@ -4,43 +4,59 @@
 #include <gl/gl.h>
 #include <gl/glu.h>
 
-#include "vector.h"
-#include "Color.h"
+#include <string>
+
 #include "Move.h"
+#include "Model.h"
+#include "Collider.h"
+#include "Stats.h"
+
+#include "Color.h"
+
+using namespace std;
 
 class Object{
-protected:
-	int m_vertNum;
-
+private:
+	Move* m_move;
+	Model* m_model;
+	Collider* m_collider;
+	Stats* m_stats;
+//private:
+	bool m_enabled;
+	int m_id;
 	float m_scale;
+	string m_name;
 
 	Color m_color;
 
-	Vector* m_verts;
-
-	Move* m_move;
+	static int uniqueID;
 public:
 	Object();
-	Object(int vertNum, float scale = 1.0f);
+	Object(Object const& obj);
+	Object(string name);
 	~Object();
 
-	int getVertNum() const;
-
-	float getScale() const;
-
-	Color getColor() const;
-
-	Vector* getAngle() const;
-	Vector* getPos() const;
-
+	void setEnabled(bool enabled);
+	void setName(string name);
 	void setScale(float scale);
+	void setCollider(Collider* collider);
+	void setModel(Model* model);
 	void setColor(Color color);
 
-	Move* move();
+	bool getEnabled();
+	int getID();
+	string getName();
+	Model* getModel();
+	Move* getMove();
+	Collider* getCollider();
+	Stats* getStats();
+	
+	void Update();
+	void Render();
 
-	void drawFace(int v0, int v1, int v2, int v3);
-	void drawTri(int v0, int v1, int v2);
-
-	virtual void Render() = 0;
+	virtual void Collided(Collider* hitObj){};
+	virtual void localUpdate(){};
+	virtual void localRender(){};
+private:
+	static int getUniqueID();
 };
-

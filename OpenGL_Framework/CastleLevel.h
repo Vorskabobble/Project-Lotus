@@ -1,8 +1,9 @@
 #pragma once
 
 #include "vector.h"
-#include "ObjModel.h"
+#include "Object.h"
 #include "GameInfo.h"
+#include "GUI.h"
 
 #include <map>
 
@@ -13,33 +14,41 @@ typedef struct{
 
 class CastleLevel{
 protected:
-	Vector* gatePos;
-	ObjModel* model;
-	ObjModel* gateMod;
-	map<std::string, MACHPOINT*> points;
+	Object* model;
+	Object* gateMod;
+	map<std::string, Collider*> points;
+	map<std::string, bool> hasMachine;
 
 	bool occupied;
+	std::string name;
 
 	GameInfo* Game;
+	GUI* guiHandle;
+
+	GUIElement* gateHealth;
 public:
-	CastleLevel();
+	CastleLevel(std::string uniqueName);
 	~CastleLevel();
 
-	void LoadModel(const char* pFile);
-	void LoadGate(const char* pFile);
 
-	void addMachPoint(std::string name, Vector point);
+	void setModel(Object* level);
+	void setGate(Object* gate);
 
-	void SetGatePosition(Vector point);
+	void addMachPoint(std::string name, Collider* collider);
+
 	void setPosition(Vector position);
 	void setRotation(Vector rotation);
 
 	bool getOccupied();
+	std::string getName();
 
 	Vector getPosition();
 	Vector getRotation();
 
-	virtual void Render() = 0;
-	virtual void Update() = 0;
+	void Update();
+	void Render();
+
+	virtual void localUpdate() = 0;
+	virtual void localRender() = 0;
 };
 

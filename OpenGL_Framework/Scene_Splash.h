@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Scene.h"
-#include "ObjCube.h"
-#include "ObjModel.h"
 
 #include <irrKlang.h>
 
@@ -10,7 +8,7 @@
 
 class Scene_Splash: public Scene{
 private:
-	ObjModel* model;
+	Object* model;
 	SceneMenu* menu;
 	ISoundEngine* sndEngine;
 	float startTime;

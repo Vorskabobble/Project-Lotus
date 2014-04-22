@@ -1,5 +1,6 @@
 #pragma once
 #include "PlayerTroop.h"
+#include "ModelLoader.h"
 
 enum TROOPTYPE{
 	MILITIA = 0,
@@ -8,6 +9,8 @@ enum TROOPTYPE{
 };
 
 class TroopCreator{
+private:
+	ModelLoader* loader;
 public:
 	TroopCreator();
 	~TroopCreator();

@@ -24,9 +24,10 @@ protected:
 	bool isActive, canRender, is3D;
 	float m_x, m_y, m_z, m_w, m_h;
 
-	char* elementText;
+	std::string elementText;
 
-	Color m_color = COLOR_WHITE;
+	Color m_color;
+	Color m_subColor;
 	BFont* Text;
 
 	GUIState* state;
@@ -40,17 +41,19 @@ public:
 	void setRender(bool render);
 
 	void setFont(int size = 12, char* font = "Courier");
-	void setText(char* text);
+	void setText(std::string text = "");
 
 	void setPosition(int x, int y, int z = 1);
 	void setDimensions(int w, int h);
 	void setColor(Color color);
+	void setSubColor(Color color);
 
 	GUIState* getState();
 
 	virtual bool Update() = 0;
 	virtual void lRender(){};
 	void Render();
+	void boxRender(int x, int y, int w, int h, Color color);
 
 	vector3 worldToScreen();
 	bool containsMouse();

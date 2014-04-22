@@ -5,23 +5,21 @@ Scene::Scene(){
 	Game = GameInfo::getInstance();
 	GUIHandle = GUI::getInstance();
 	mainCamera = new Camera();
+	modelLoader = new ModelLoader();
+	collisionEngine = new CollisionEngine();
+	
+	sndEngine = createIrrKlangDevice();
+	sndEngine->setSoundVolume(0.3f);
 }
 
 Scene::~Scene(){
 	if (mainCamera){
 		delete mainCamera;
 	}
-}
-
-void Scene::addObject(Object* object){
-	m_objects.push_back(object);
-}
-
-void Scene::removeObject(Object* object){
-	std::vector<Object*>::iterator it;
-	for (it = m_objects.begin(); it != m_objects.end(); it++){
-		if (*it = object){
-			m_objects.erase(it);
-		}
+	if (modelLoader){
+		delete modelLoader;
+	}
+	if (collisionEngine){
+		delete collisionEngine;
 	}
 }

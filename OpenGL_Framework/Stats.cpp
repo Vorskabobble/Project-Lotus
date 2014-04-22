@@ -1,18 +1,18 @@
 #include "Stats.h"
 
 Stats::Stats(){
-	m_level = 0;
-	m_playerID = 0;
-	m_health = 0;
-	m_maxHealth = 0;
-	m_attack = 0;
-	m_maxAttack = 0;
-	m_armour = 0;
-	m_maxArmour = 0;
-	m_defence = 0;
-	m_maxDefence = 0;
-	m_maxRange = 0;
-	m_maxSpeed = 0;
+	m_level = 1;
+	m_playerID = 1;
+	m_health = 1;
+	m_maxHealth = 1;
+	m_attack = 1;
+	m_maxAttack = 1;
+	m_armour = 1;
+	m_maxArmour = 1;
+	m_defence = 1;
+	m_maxDefence = 1;
+	m_maxRange = 1;
+	m_maxSpeed = 1;
 }
 
 Stats::Stats(int level, int playerID, int health, int maxHealth, int attack, int maxAttack, int armour, int maxArmour, int defence, int maxDefence, int range, int speed){

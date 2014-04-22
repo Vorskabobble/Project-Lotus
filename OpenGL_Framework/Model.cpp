@@ -3,12 +3,16 @@
 Model::Model(){
 	numMesh = 0;
 	meshes = NULL;
+	wireframe = false;
+	texID = 0;
 }
 
 Model::Model(int numMeshes, s_mesh* mesh){
 	numMesh = numMeshes;
 	meshes = new s_mesh[numMesh];
 	memcpy(meshes, mesh, sizeof(s_mesh)* numMesh);
+	wireframe = false;
+	texID = 0;
 }
 
 Model::~Model(){
@@ -47,21 +51,45 @@ s_mesh& Model::getMesh(int index){
 	return meshes[index];
 }
 
+void Model::setWireframe(bool renderWireframe){
+	wireframe = renderWireframe;
+}
+
 void Model::Render(){
+	glEnable(GL_TEXTURE_2D);
 	glEnableClientState(GL_VERTEX_ARRAY);
-//	glEnableClientState(GL_NORMAL_ARRAY);
-//	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+	glBindTexture(GL_TEXTURE_2D, texID);
 
 	for (int i = 0; i < numMesh; i++){
 		glVertexPointer(3, GL_FLOAT, 0, meshes[i].vertexArray);
-//		glNormalPointer(GL_FLOAT, 3, meshes[i].normalArray);
-//		glTexCoordPointer(2, GL_FLOAT, 2, meshes[i].textUVArray);
+		
+		if (meshes[i].normalArray){
+			glEnableClientState(GL_NORMAL_ARRAY);
+			glNormalPointer(GL_FLOAT, 0, meshes[i].normalArray);
+		}
+		if (meshes[i].textUVArray){
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+			glTexCoordPointer(2, GL_FLOAT, 0, meshes[i].textUVArray);
+		}
 
-		glDrawArrays(GL_TRIANGLES, 0, meshes[i].numFaces * 3);
+		if (wireframe){
+			glDrawArrays(GL_LINE_LOOP, 0, meshes[i].numFaces * 3);
+		}
+		else{
+			glDrawArrays(GL_TRIANGLES, 0, meshes[i].numFaces * 3);
+		}
+		glDisableClientState(GL_NORMAL_ARRAY);
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	}
 
 	glDisableClientState(GL_VERTEX_ARRAY);
-//	glDisableClientState(GL_NORMAL_ARRAY);
-//	glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+	glDisable(GL_TEXTURE_2D);
+}
+
+void Model::loadTexture(char* pFile){
+//	glDeleteTextures(1, &texID);
+	LoadTextures* lt = new LoadTextures(pFile);
+	texID = lt->getTexture();
+	delete lt;
 }
 

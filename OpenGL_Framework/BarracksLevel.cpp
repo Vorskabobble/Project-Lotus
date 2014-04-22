@@ -1,6 +1,6 @@
 #include "BarracksLevel.h"
 
-BarracksLevel::BarracksLevel(){
+BarracksLevel::BarracksLevel(std::string name): CastleLevel(name){
 	m_spawn = NULL;
 	captured = false;
 	occupied = false;
@@ -30,25 +30,32 @@ Vector BarracksLevel::getSpawn(){
 	return NULL;
 }
 
-void BarracksLevel::Render(){
-	if (model){
-		model->Render();
-	}
-	if (gateMod){
-		gateMod->Render();
-	}
-	for (auto& troop : troops){
-		troop->Render();
-	}
-}
-
-void BarracksLevel::Update(){
+void BarracksLevel::localUpdate(){
 	if (Game->INPUT.keyPressed[VK_B]){
 		PlayerTroop* temp = creator->CreateTroop(MILITIA);
 		troops.push_back(temp);
 		Game->INPUT.keyPressed[VK_B] = false;
 	}
+	
+	vector<PlayerTroop*>::iterator it;
+	for (it = troops.begin(); it != troops.end(); it++){
+		(*it)->Update();
+	}
+}
+
+void BarracksLevel::localRender(){
 	for (auto& troop : troops){
-		troop->Update();
+		troop->Render();
+	}
+}
+
+void BarracksLevel::removeTroop(PlayerTroop* troop){
+	vector<PlayerTroop*>::iterator it;
+
+	for (it = troops.begin(); it != troops.end(); it++){
+		if ((*it) == troop){
+			troops.erase(it);
+			delete troop;
+		}
 	}
 }

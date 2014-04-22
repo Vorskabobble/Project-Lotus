@@ -1,8 +1,7 @@
 #include "MachineLevel.h"
 
-MachineLevel::MachineLevel(){
+MachineLevel::MachineLevel(std::string name): CastleLevel(name){
 	m_health = 100;
-	m_gateHealth = 100;
 	creator = new MachineCreator;
 }
 
@@ -16,7 +15,7 @@ MachineLevel::~MachineLevel(){
 	machines.clear();
 }
 
-void MachineLevel::Update(){
+void MachineLevel::localUpdate(){
 	/*
 		if click on machine point
 			check if machine exists
@@ -27,15 +26,17 @@ void MachineLevel::Update(){
 		check collision with the gate {needs collision engine}
 
 	*/
+
+	for (auto& point : points){
+		if (point.second){
+			if (hasMachine[point.first] == false){
+//				machines[point.first] = creator->createMachine(0);
+			}
+		}
+	}
 }
 
-void MachineLevel::Render(){
-	if (model){
-		model->Render();
-	}
-	if (gateMod){
-		gateMod->Render();
-	}
+void MachineLevel::localRender(){
 	for (auto& mach : machines){
 		mach.second->Render();
 	}

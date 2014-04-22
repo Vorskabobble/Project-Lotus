@@ -1,32 +1,20 @@
 #pragma once
 
-#include "OBjModel.h"
+#include "Object.h"
 #include "Stats.h"
 
-class PlayerTroop{
+class PlayerTroop : public Object{
 private:
-	bool m_canMove;
-	Stats* stats;
-
-	ObjModel* model;
 	Vector* m_target;
 public:
 	PlayerTroop();
 	PlayerTroop(int health, int attack, int armour, int defence, int range, float speed);
 	~PlayerTroop();
 
-	void setCanMove(bool canMove);
 	void setMoveTarget(Vector target);
 
-	void loadModel(const char* pFile);
-
-	bool getCanMove();
-
-	Move* move();
-	Stats* getStats();
-
-	void Render();
-	void Update();
+	void localUpdate();
+	void localRender();
 	void Upgrade(float percent);
 	void ResolveBattle(PlayerTroop* enemy);
 	void DealDamage(int damage);

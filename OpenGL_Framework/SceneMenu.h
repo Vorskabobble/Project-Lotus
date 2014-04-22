@@ -1,11 +1,11 @@
 #pragma once
 #include "Scene.h"
 #include "SceneGame.h"
-#include "ObjCube.h"
+//#include "ObjCube.h"
 
 class SceneMenu : public Scene{
 private:
-	ObjCube* cube;
+	Object* cube;
 	SceneGame* game;
 public:
 	SceneMenu();

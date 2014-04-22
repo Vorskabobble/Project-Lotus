@@ -6,6 +6,7 @@
 class GUIWindow{
 private:
 	bool isActive, canRender;
+	
 	std::map<std::string, GUIElement*> elements;
 public:
 	~GUIWindow();

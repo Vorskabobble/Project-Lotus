@@ -5,13 +5,17 @@
 #include <gl/glu.h>
 
 #include "Move.h"
+#include "Skybox.h"
 
 class Camera{
-public:
+private:
 	Move* move;
+	Skybox* skybox;
 public:
 	Camera();
 	~Camera();
+
+	Move* getMove();
 
 	void Update();
 };

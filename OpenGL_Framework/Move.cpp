@@ -1,12 +1,18 @@
 #include "Move.h"
 
 Move::Move(){
-	position = new Vector(0.0f, 0.0f, 0.0f);
-	rotation = new Vector(0.0f, 0.0f, 0.0f);
-	target = new Vector(0.0f, 0.0f, 0.0f);
-	m_forward = new Vector(0.0f, 0.0f, 1.0f);
-	m_left = new Vector(1.0f, 0.0f, 0.0f);
-	m_up = new Vector(0.0f, 1.0f, 0.0f);
+	position = Vector(0.0f, 0.0f, 0.0f);
+	rotation = Vector(0.0f, 0.0f, 0.0f);
+	target = Vector(0.0f, 0.0f, 0.0f);
+	m_forward = Vector(0.0f, 0.0f, 1.0f);
+	m_left = Vector(-1.0f, 0.0f, 0.0f);
+	m_up = Vector(0.0f, 1.0f, 0.0f);
+
+	velocity = Vector(0.0f, 0.0f, 0.0f);
+	lvelocity = Vector(0.0f, 0.0f, 0.0f);
+
+	physicsEnabled = false;
+	m_gravity = 9.8f;
 
 	m_moveX = m_moveY = m_moveZ = false;
 	m_rotX = m_rotY = m_rotZ = false;
@@ -24,34 +30,44 @@ Move::Move(){
 }
 
 Move::~Move(){
-	if (position){
-		delete position;
-	}
-	if (rotation){
-		delete rotation;
-	}
-	if (m_forward){
-		delete m_forward;
-	}
-	if (m_left){
-		delete m_left;
-	}
-	if (m_up){
-		delete m_up;
-	}
+
+}
+
+Vector& Move::getPosition(){
+	return position;
+}
+
+Vector& Move::getRotation(){
+	return rotation;
+}
+
+Vector Move::getTarget() const{
+	return target;
+}
+
+Vector& Move::getVelocity(){
+	return lvelocity;
+}
+
+void Move::enablePhysics(bool enabled){
+	physicsEnabled = enabled;
+}
+
+void Move::setGravity(float gravity){
+	m_gravity = gravity;
 }
 
 void Move::move(AXIS axis, float speed){
 	switch (axis)
 	{
 	case X:
-		position->x += speed * Game->TIME.delta;
+		velocity.x += speed * Game->TIME.delta;
 		break;
 	case Y:
-		position->y += speed * Game->TIME.delta;
+		velocity.y += speed * Game->TIME.delta;
 		break;
 	case Z:
-		position->z += speed * Game->TIME.delta;
+		velocity.z += speed * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -65,17 +81,17 @@ void Move::smoothMove(AXIS axis, float speed, float accel){
 	case X:
 		m_moveX = true;
 		m_lerpX += accel * Game->TIME.delta;
-		position->x += lerp(0, speed, m_lerpX);
+		velocity.x += lerp(0, speed, m_lerpX);
 		break;
 	case Y:
 		m_moveY = true;
 		m_lerpY += accel * Game->TIME.delta;
-		position->y += lerp(0, speed, m_lerpY);
+		velocity.y += lerp(0, speed, m_lerpY);
 		break;
 	case Z:
 		m_moveZ = true;
 		m_lerpZ += accel * Game->TIME.delta;
-		position->z += lerp(0, speed, m_lerpY);
+		velocity.z += lerp(0, speed, m_lerpY);
 		break;
 	default:
 		break;
@@ -86,19 +102,13 @@ void Move::localMove(AXIS axis, float speed){
 	switch (axis)
 	{
 	case X:
-		position->x += m_left->x * speed * Game->TIME.delta;
-		position->y += m_left->y * speed * Game->TIME.delta;
-		position->z += m_left->z * speed * Game->TIME.delta;
+		velocity += m_left * speed * Game->TIME.delta;
 		break;
 	case Y:
-		position->x += m_up->x * speed * Game->TIME.delta;
-		position->y += m_up->y * speed * Game->TIME.delta;
-		position->z += m_up->z * speed * Game->TIME.delta;
+		velocity += m_up * speed * Game->TIME.delta;
 		break;
 	case Z:
-		position->x += m_forward->x * speed * Game->TIME.delta;
-		position->y += m_forward->y * speed * Game->TIME.delta;
-		position->z += m_forward->z * speed * Game->TIME.delta;
+		velocity += m_forward * speed * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -112,23 +122,17 @@ void Move::localSmoothMove(AXIS axis, float speed, float accel){
 	case X:
 		m_lMoveX = true;
 		m_lLerpX += accel * Game->TIME.delta;
-		position->x += m_left->x * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
-		position->y += m_left->y * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
-		position->z += m_left->z * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
+		velocity += m_left * lerp(0, speed, m_lLerpX) * Game->TIME.delta;
 		break;
 	case Y:
 		m_lMoveY = true;
 		m_lLerpY += accel * Game->TIME.delta;
-		position->x += m_up->x * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
-		position->y += m_up->y * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
-		position->z += m_up->z * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
+		velocity += m_up * lerp(0, speed, m_lLerpY) * Game->TIME.delta;
 		break;
 	case Z:
 		m_lMoveZ = true;
 		m_lLerpZ += accel * Game->TIME.delta;
-		position->x += m_forward->x * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
-		position->y += m_forward->y * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
-		position->z += m_forward->z * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
+		velocity += m_forward * lerp(0, speed, m_lLerpZ) * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -139,13 +143,13 @@ void Move::rotateBy(AXIS axis, float angle){
 	switch (axis)
 	{
 	case X:
-		rotation->x += angle * Game->TIME.delta;
+		rotation.x += angle * Game->TIME.delta;
 		break;
 	case Y:
-		rotation->y += angle * Game->TIME.delta;
+		rotation.y += angle * Game->TIME.delta;
 		break;
 	case Z:
-		rotation->z += angle * Game->TIME.delta;
+		rotation.z += angle * Game->TIME.delta;
 		break;
 	default:
 		break;
@@ -160,17 +164,17 @@ void Move::smoothRotateBy(AXIS axis, float angle, float speed){
 	case X:
 		m_rotX = true;
 		m_lerpRotX += speed * Game->TIME.delta;
-		rotation->x += lerp(0, angle, m_lerpRotX);
+		rotation.x += lerp(0, angle, m_lerpRotX);
 		break;
 	case Y:
 		m_rotY = true;
 		m_lerpRotY += speed * Game->TIME.delta;
-		rotation->y += lerp(0, angle, m_lerpRotY);
+		rotation.y += lerp(0, angle, m_lerpRotY);
 		break;
 	case Z:
 		m_rotZ = true;
 		m_lerpRotZ += speed * Game->TIME.delta;
-		rotation->z += lerp(0, angle, m_lerpRotZ);
+		rotation.z += lerp(0, angle, m_lerpRotZ);
 		break;
 	default:
 		break;
@@ -182,13 +186,13 @@ void Move::rotateTo(AXIS axis, float angle){
 	switch (axis)
 	{
 	case X:
-		rotation->x = angle;
+		rotation.x = angle;
 		break;
 	case Y:
-		rotation->y = angle;
+		rotation.y = angle;
 		break;
 	case Z:
-		rotation->z = angle;
+		rotation.z = angle;
 		break;
 	default:
 		break;
@@ -200,13 +204,13 @@ void Move::smoothRotateTo(AXIS axis, float angle, float speed){
 	switch (axis)
 	{
 	case X:
-		smoothRotateBy(X, angle - rotation->x, speed);
+		smoothRotateBy(X, angle - rotation.x, speed);
 		break;
 	case Y:
-		smoothRotateBy(Y, angle - rotation->y, speed);
+		smoothRotateBy(Y, angle - rotation.y, speed);
 		break;
 	case Z:
-		smoothRotateBy(Z, angle - rotation->z, speed);
+		smoothRotateBy(Z, angle - rotation.z, speed);
 		break;
 	default:
 		break;
@@ -214,28 +218,21 @@ void Move::smoothRotateTo(AXIS axis, float angle, float speed){
 }
 
 void Move::calculateLocalVectors(){
-	Vector t_rotation = *rotation;
+	Vector t_rotation = rotation;
 
-	//converts angles to radians by dividing by number of degrees in a radian
-	t_rotation /= 57.2957795f;
+	//converts angles to radians by multiplying degrees by radians in a degree
+	t_rotation *= 0.017745329252;
 
-	float cosX = cos(t_rotation.x);
 	float cosY = cos(t_rotation.y);
-	float cosZ = cos(t_rotation.z);
-	float rad90 = 1.570796327f;
-	float cos90X = cos(rad90 + t_rotation.x);
-	float cos90Y = cos(rad90 + t_rotation.y);
-	float cos90Z = cos(rad90 + t_rotation.z);
+	float sinY = sin(t_rotation.y);
+	float cosX = cos(t_rotation.x);
+	float sinX = sin(t_rotation.x);
 
-	m_forward->x = cosY * cosZ;
-	m_forward->y = cosX * cosZ;
-	m_forward->z = cosX * cosY;
+	m_forward.x = sinY * cosX;
+	m_forward.y = sinX;
+	m_forward.z = cosY * cosX;
 
-	m_left->x = cos90Y * cos90Z;
-	m_left->y = cos90X * cos90Z;
-	m_left->z = cos90X * cos90Y;
-
-	*m_up = m_forward->CrossProduct(*m_left);
+	m_left = m_forward ^ m_up;
 }
 
 void Move::setTargetDistance(float distance){
@@ -276,6 +273,13 @@ void Move::Update(){
 			m_lerpRotZ = 0.0f;
 		}
 	}
+
+	if (physicsEnabled){
+		velocity.y -= m_gravity * Game->TIME.delta;
+	}
+
+	position += velocity;
+
 	m_moveX = false;
 	m_moveY = false;
 	m_moveZ = false;
@@ -286,5 +290,8 @@ void Move::Update(){
 	m_rotY = false;
 	m_rotZ = false;
 
-	*target = *position + (*m_forward * targetDis);
+	target = position + (m_forward * targetDis);
+
+	lvelocity = velocity;
+	velocity = 0;
 }

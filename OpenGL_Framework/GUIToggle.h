@@ -6,5 +6,6 @@ public:
 	~GUIToggle();
 
 	bool Update();
+	void lRender();
 };
 
