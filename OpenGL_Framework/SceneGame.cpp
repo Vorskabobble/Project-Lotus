@@ -5,15 +5,25 @@ SceneGame::SceneGame(){
 }
 
 SceneGame::~SceneGame(){
-
+	collisionEngine->DeleteTree();
 }
 
 void SceneGame::Initialise(){
-	castle->Initialise();
 	collisionEngine->CreateTree(0, 0, 0, 50, 50, 50);
+	castle->Initialise();
+
+	cube = new Cuboid("Images/s2.bmp", 1, 1, 1);
+	cube->setPos(Vector(0, -10, 0));
+
+	tGen = new TerrainGenerator();
+	tGen->generateMap(LAND);
 }
 
 void SceneGame::Update(){
+	Game->SCREEN.camX = mainCamera->getMove()->getPosition().x;
+	Game->SCREEN.camY = mainCamera->getMove()->getPosition().y;
+	Game->SCREEN.camZ = mainCamera->getMove()->getPosition().z;
+
 	castle->Update();
 
 	if (Game->INPUT.keyPressed[VK_W]){
@@ -50,6 +60,8 @@ void SceneGame::Update(){
 
 void SceneGame::Render(){
 	mainCamera->Update();
+
+	cube->render();
 
 	castle->Render();
 	collisionEngine->Render();

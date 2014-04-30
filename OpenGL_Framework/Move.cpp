@@ -11,7 +11,7 @@ Move::Move(){
 	velocity = Vector(0.0f, 0.0f, 0.0f);
 	lvelocity = Vector(0.0f, 0.0f, 0.0f);
 
-	physicsEnabled = false;
+	physicsEnabled = stopMove = false;
 	m_gravity = 9.8f;
 
 	m_moveX = m_moveY = m_moveZ = false;
@@ -31,6 +31,10 @@ Move::Move(){
 
 Move::~Move(){
 
+}
+
+void Move::stop(){
+	stopMove = true;
 }
 
 Vector& Move::getPosition(){
@@ -240,58 +244,61 @@ void Move::setTargetDistance(float distance){
 }
 
 void Move::Update(){
-	if (fCountw){
-		if (!m_moveX){
-			m_lerpX = 0.0f;
+	if (!stopMove){
+		if (fCountw){
+			if (!m_moveX){
+				m_lerpX = 0.0f;
+			}
+			if (!m_moveY){
+				m_lerpY = 0.0f;
+			}
+			if (!m_moveZ){
+				m_lerpZ = 0.0f;
+			}
 		}
-		if (!m_moveY){
-			m_lerpY = 0.0f;
+		if (fCountl){
+			if (!m_lMoveX){
+				m_lLerpX = 0.0f;
+			}
+			if (!m_lMoveY){
+				m_lLerpX = 0.0f;
+			}
+			if (!m_lMoveZ){
+				m_lLerpZ = 0.0f;
+			}
 		}
-		if (!m_moveZ){
-			m_lerpZ = 0.0f;
+		if (fCountrw){
+			if (!m_rotX){
+				m_lerpRotX = 0.0f;
+			}
+			if (!m_rotY){
+				m_lerpRotY = 0.0f;
+			}
+			if (!m_rotZ){
+				m_lerpRotZ = 0.0f;
+			}
 		}
-	}
-	if (fCountl){
-		if (!m_lMoveX){
-			m_lLerpX = 0.0f;
-		}
-		if (!m_lMoveY){
-			m_lLerpX = 0.0f;
-		}
-		if (!m_lMoveZ){
-			m_lLerpZ = 0.0f;
-		}
-	}
-	if (fCountrw){
-		if (!m_rotX){
-			m_lerpRotX = 0.0f;
-		}
-		if (!m_rotY){
-			m_lerpRotY = 0.0f;
-		}
-		if (!m_rotZ){
-			m_lerpRotZ = 0.0f;
-		}
-	}
 
-	if (physicsEnabled){
-		velocity.y -= m_gravity * Game->TIME.delta;
+		if (physicsEnabled){
+			velocity.y -= m_gravity * Game->TIME.delta;
+		}
+
+		position += velocity;
+
+		m_moveX = false;
+		m_moveY = false;
+		m_moveZ = false;
+		m_lMoveX = false;
+		m_lMoveY = false;
+		m_lMoveZ = false;
+		m_rotX = false;
+		m_rotY = false;
+		m_rotZ = false;
+
+		target = position + (m_forward * targetDis);
 	}
-
-	position += velocity;
-
-	m_moveX = false;
-	m_moveY = false;
-	m_moveZ = false;
-	m_lMoveX = false;
-	m_lMoveY = false;
-	m_lMoveZ = false;
-	m_rotX = false;
-	m_rotY = false;
-	m_rotZ = false;
-
-	target = position + (m_forward * targetDis);
 
 	lvelocity = velocity;
 	velocity = 0;
+	stopMove = false;
 }

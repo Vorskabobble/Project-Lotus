@@ -18,6 +18,8 @@ private:
 		bool keyPressed[256];
 		int mouseX;
 		int mouseY;
+		int lmouseX;
+		int lmouseY;
 	}GAME_INPUT;
 
 	typedef struct{
@@ -42,6 +44,9 @@ private:
 		int width;
 		int height;
 		HDC hDC;
+		float camX;
+		float camY;
+		float camZ;
 	}GAME_SCREEN;
 
 	typedef struct{

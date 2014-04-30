@@ -6,6 +6,8 @@
 
 #include <string>
 
+#include "CollisionEngine.h"
+
 #include "Move.h"
 #include "Model.h"
 #include "Collider.h"
@@ -28,6 +30,8 @@ private:
 	string m_name;
 
 	Color m_color;
+
+	CollisionEngine* CE;
 
 	static int uniqueID;
 public:

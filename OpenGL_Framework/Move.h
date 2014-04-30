@@ -15,7 +15,7 @@ class Move{
 private:
 	float targetDis;
 
-	bool physicsEnabled;
+	bool physicsEnabled, stopMove;
 	float m_gravity;
 
 	//bools used for lerp functions for world movement
@@ -52,6 +52,8 @@ private:
 public:
 	Move();
 	~Move();
+
+	void stop();
 
 	//Retrive position, can be used for setting
 	Vector& getPosition();

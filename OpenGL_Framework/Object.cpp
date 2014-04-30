@@ -12,9 +12,11 @@ Object::Object(){
 	m_name = "Unnamed";
 	m_color = COLOR_WHITE;
 	m_id = getUniqueID();
+	CE = CollisionEngine::getInstance();
 }
 
 Object::Object(Object const& obj){
+	CE = CollisionEngine::getInstance();
 	m_move = new Move(*obj.m_move);
 //	memcpy(m_move, obj.m_move, sizeof(Move));
 
@@ -32,7 +34,14 @@ Object::Object(Object const& obj){
 	else{
 		m_stats = NULL;
 	}
-	m_collider = NULL;
+	if (obj.m_collider){
+		m_collider = CE->newBoxCollider(obj.m_move->getPosition(), obj.m_collider->getDimensions().x, obj.m_collider->getDimensions().y, obj.m_collider->getDimensions().z);
+		m_collider->setAttachedObject(this);
+		m_collider->setCanRender(obj.m_collider->getRenderable());
+	}
+	else{
+		m_collider = NULL;
+	}
 	m_enabled = obj.m_enabled;
 	m_scale = obj.m_scale;
 	m_name = obj.m_name;
@@ -50,6 +59,7 @@ Object::Object(string name){
 	m_name = name;
 	m_color = COLOR_WHITE;
 	m_id = getUniqueID();
+	CE = CollisionEngine::getInstance();
 }
 
 Object::~Object(){
@@ -58,6 +68,10 @@ Object::~Object(){
 	}
 	if (m_stats){
 		delete m_stats;
+	}
+	if (m_collider){
+		CE->releaseCollider(m_collider);
+		m_collider = NULL;
 	}
 }
 

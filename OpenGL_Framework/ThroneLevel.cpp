@@ -8,7 +8,6 @@ ThroneLevel::ThroneLevel(std::string name): CastleLevel(name){
 	throne = NULL;
 }
 
-
 ThroneLevel::~ThroneLevel(){
 }
 
@@ -23,6 +22,14 @@ void ThroneLevel::localUpdate(){
 	if (kingsGaurd){
 		troopHealth->setPosition(kingsGaurd->getMove()->getPosition().x, kingsGaurd->getMove()->getPosition().y, kingsGaurd->getMove()->getPosition().z);
 		kingsGaurd->Update();
+	}
+	if (Game->INPUT.keyPressed[VK_LBUTTON]){
+		GLdouble fx, fy, fz;
+		gluUnProject(Game->INPUT.mouseX, Game->INPUT.mouseY, 1.0f, Game->GL.modelView, Game->GL.projection, Game->GL.viewport, &fx, &fy, &fz);
+		Vector temp = Vector(fx, fy, fz);
+		if (gateMod->getCollider()->clickCollision(Vector(Game->SCREEN.camX, Game->SCREEN.camY, Game->SCREEN.camZ), temp)){
+			OutputDebugStringA("click");
+		}
 	}
 }
 

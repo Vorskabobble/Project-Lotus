@@ -33,6 +33,7 @@ Vector BarracksLevel::getSpawn(){
 void BarracksLevel::localUpdate(){
 	if (Game->INPUT.keyPressed[VK_B]){
 		PlayerTroop* temp = creator->CreateTroop(MILITIA);
+		temp->getMove()->getPosition() = getPosition();
 		troops.push_back(temp);
 		Game->INPUT.keyPressed[VK_B] = false;
 	}
@@ -50,12 +51,14 @@ void BarracksLevel::localRender(){
 }
 
 void BarracksLevel::removeTroop(PlayerTroop* troop){
-	vector<PlayerTroop*>::iterator it;
+	if (troop){
+		vector<PlayerTroop*>::iterator it;
 
-	for (it = troops.begin(); it != troops.end(); it++){
-		if ((*it) == troop){
-			troops.erase(it);
-			delete troop;
+		for (it = troops.begin(); it != troops.end(); it++){
+			if ((*it) == troop){
+				troops.erase(it);
+				delete troop;
+			}
 		}
 	}
 }

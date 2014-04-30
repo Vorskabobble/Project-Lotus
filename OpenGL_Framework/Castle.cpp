@@ -2,7 +2,7 @@
 
 Castle::Castle(){
 	loader = new ModelLoader();
-	collision = new CollisionEngine();
+	collision = CollisionEngine::getInstance();
 	defeated = false;
 }
 

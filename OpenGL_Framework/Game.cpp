@@ -78,6 +78,9 @@ void Game::Update(){
 
 	scene->update();
 	GUIHandle->Update();
+
+	GInfo->INPUT.lmouseX = 0;
+	GInfo->INPUT.lmouseY = 0;
 }
 
 // Render the objects in their current state.

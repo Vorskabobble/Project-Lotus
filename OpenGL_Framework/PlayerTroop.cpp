@@ -4,7 +4,7 @@ PlayerTroop::PlayerTroop(){
 	m_target = NULL;
 }
 
-PlayerTroop::PlayerTroop(int health, int attack, int armour, int defence, int range, float speed){
+PlayerTroop::PlayerTroop(int health, int attack, int armour, int defence, int range, float speed, std::string name) : Object(name){
 	getStats()->setHealth(health);
 	getStats()->setAttack(attack);
 	getStats()->setArmour(armour);
@@ -32,13 +32,6 @@ void PlayerTroop::setMoveTarget(Vector target){
 		m_target = new Vector();
 	}
 	*m_target = target;
-}
-
-void PlayerTroop::localUpdate(){
-
-}
-
-void PlayerTroop::localRender(){
 }
 
 void PlayerTroop::Upgrade(float percent){

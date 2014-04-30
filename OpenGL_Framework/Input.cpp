@@ -16,6 +16,8 @@ void Input::processKeyUp(unsigned int key){
 }
 
 void Input::processMouseAxis(int x, int y){
+	Game->INPUT.lmouseX = Game->INPUT.mouseX;
+	Game->INPUT.lmouseY = Game->INPUT.mouseY;
 	Game->INPUT.mouseX = x;
 	Game->INPUT.mouseY = y;
 }
