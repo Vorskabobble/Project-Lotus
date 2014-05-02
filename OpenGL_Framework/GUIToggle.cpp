@@ -32,7 +32,7 @@ void GUIToggle::lRender(){
 				t_pos.z = m_z;
 			}
 			if (t_pos.z > 0 && t_pos.z <= 1){
-				boxRender(t_pos.x, t_pos.y, m_w, m_h, m_subColor);
+				boxRender(t_pos.x, t_pos.y, m_w, m_h, m_subColour);
 			}
 		}
 	}

@@ -26,8 +26,8 @@ private:
 		float current;
 		float last;
 		float delta;
-		float fps;
-		float avgFps;
+		double fps;
+		double avgFps;
 	}GAME_TIME;
 
 	typedef struct{

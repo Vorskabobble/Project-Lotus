@@ -48,6 +48,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)/libNoise;$(IncludePath)</IncludePath>
+    <EnableManagedIncrementalBuild>false</EnableManagedIncrementalBuild>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -62,6 +65,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <AdditionalIncludeDirectories>$(SolutionDir)\Resil;$(SolutionDir)\irrKlang;$(SolutionDir)\UnitTest++\src;$(SolutionDir)\Assimp\;$(SolutionDir)\libNoise;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <EnablePREfast>false</EnablePREfast>
     </ClCompile>
     <Link>
       <AdditionalDependencies>opengl32.lib;glu32.lib;odbc32.lib;odbccp32.lib;winmm.lib;assimp.lib;$(SolutionDir)/irrKlang/irrKlang.lib;$(SolutionDir)/Resil/DevIL.lib;$(SolutionDir)/Resil/ILU.lib;$(SolutionDir)/Resil/ILUT.lib;$(SolutionDir)/Resil/zlib1.lib;$(SolutionDir)/libNoise/libnoise.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -114,6 +118,7 @@
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="BFont.cpp" />
     <ClCompile Include="BRMilitia.cpp" />
+    <ClCompile Include="BRTroopCreator.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Castle.cpp" />
     <ClCompile Include="CastleLevel.cpp" />
@@ -158,6 +163,7 @@
     <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="SmallCastle.cpp" />
     <ClCompile Include="Stats.cpp" />
+    <ClCompile Include="Terrain.cpp" />
     <ClCompile Include="TerrainGenerator.cpp" />
     <ClCompile Include="TestAll.cpp" />
     <ClCompile Include="TestGameDirector.cpp" />
@@ -198,6 +204,7 @@
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="BFont.h" />
     <ClInclude Include="BRMilitia.h" />
+    <ClInclude Include="BRTroopCreator.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Castle.h" />
     <ClInclude Include="CastleLevel.h" />
@@ -246,6 +253,7 @@
     <ClInclude Include="Skybox.h" />
     <ClInclude Include="SmallCastle.h" />
     <ClInclude Include="Stats.h" />
+    <ClInclude Include="Terrain.h" />
     <ClInclude Include="TerrainGenerator.h" />
     <ClInclude Include="TestAll.h" />
     <ClInclude Include="ThroneLevel.h" />

@@ -10,7 +10,10 @@ TimeControl::TimeControl(){
 }
 
 TimeControl::~TimeControl(){
-	delete timer;
+	if (timer){
+		delete timer;
+	}
+	instance = NULL;
 }
 
 TimeControl* TimeControl::getInstance(){
@@ -39,6 +42,8 @@ void TimeControl::calcDeltaTime(){
 
 void TimeControl::calcFPS(){
 	Game->TIME.fps = 1.0f / Game->TIME.delta;
-	Game->TIME.avgFps += Game->TIME.fps;
-	Game->TIME.avgFps /= 2.0f;
+	if (Game->TIME.fps < 100000){
+		Game->TIME.avgFps += Game->TIME.fps;
+		Game->TIME.avgFps /= 2.0f;
+	}
 }

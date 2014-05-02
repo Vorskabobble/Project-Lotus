@@ -12,6 +12,7 @@ CastleLevel::CastleLevel(std::string uniqueName){
 	guiHandle->newWindow(name, 0, 0, 100, 100);
 	gateHealth = guiHandle->newElement(STATUS, "gateHealth", 0, 0, 100, 10, name);
 	gateHealth->set3D(true);
+	gateHealth->setOffset(-10, 3, 0);
 	gateHealth->setRender(false);
 }
 
@@ -69,6 +70,9 @@ void CastleLevel::setPosition(Vector position){
 	if (gateMod){
 		gateMod->getMove()->getPosition().set(position.x, position.y, position.z);
 	}
+	if (gateHealth){
+		gateHealth->setPosition(gateMod->getMove()->getPosition().x, gateMod->getMove()->getPosition().y, gateMod->getMove()->getPosition().z);
+	}
 }
 
 void CastleLevel::setRotation(Vector rotation){
@@ -93,6 +97,14 @@ Vector CastleLevel::getRotation(){
 	return model->getMove()->getRotation();
 }
 
+void CastleLevel::setGold(float gold){
+	this->gold = gold;
+}
+
+float CastleLevel::getGold(){
+	return gold;
+}
+
 void CastleLevel::Update(){
 	for (auto& collider : points){
 		if (hasMachine[collider.first]){
@@ -104,10 +116,17 @@ void CastleLevel::Update(){
 		}
 	}
 	if (gateMod){
+		gateMod->Update();
 		gateHealth->getState()->state = gateMod->getStats()->getHealth() / gateMod->getStats()->getMaxHealth();
+		if (gateMod->getStats()->getHealth() <= 0){
+			gateHealth->setRender(false);
+			delete gateMod;
+			gateMod = NULL;
+		}
 	}
-	if (gateMod->getStats()->getHealth() <= 0){
-		gateHealth->setRender(false);
+
+	if (model){
+		model->Update();
 	}
 
 	localUpdate();

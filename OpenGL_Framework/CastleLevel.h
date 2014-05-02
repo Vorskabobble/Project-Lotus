@@ -22,28 +22,38 @@ protected:
 	bool occupied;
 	std::string name;
 
+	float gold;
+
 	GameInfo* Game;
 	GUI* guiHandle;
 
 	GUIElement* gateHealth;
 public:
 	CastleLevel(std::string uniqueName);
-	~CastleLevel();
+	virtual ~CastleLevel();
 
-
+	//set the model of the castle level
 	void setModel(Object* level);
+	//set the model object of the castle gate
 	void setGate(Object* gate);
 
+	//add a point for machine placing
 	void addMachPoint(std::string name, Collider* collider);
 
+	//sets position of model and gate
 	void setPosition(Vector position);
+	//sets rotation of model and gate
 	void setRotation(Vector rotation);
 
+	//returns occupied - evaluation specified in derived classes
 	bool getOccupied();
 	std::string getName();
 
 	Vector getPosition();
 	Vector getRotation();
+
+	void setGold(float gold);
+	float getGold();
 
 	void Update();
 	void Render();

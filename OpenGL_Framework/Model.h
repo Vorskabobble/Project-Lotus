@@ -19,13 +19,19 @@ private:
 public:
 	Model();
 	Model(int numMeshes, s_mesh* mesh);
+	//copy constructor
+	Model(const Model& model);
 	~Model();
 
+	//returns the number of meshes
 	int getNumMesh();
+	//returns the specified mesh
 	s_mesh& getMesh(int index = 0);
 
+	//sets render mode to wireframe or solid
 	void setWireframe(bool renderWireframe);
 
+	//loads texture for the model
 	void loadTexture(char* pFile);
 
 	void Render();

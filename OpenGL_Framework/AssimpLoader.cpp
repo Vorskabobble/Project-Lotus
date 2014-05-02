@@ -6,6 +6,9 @@ AssimpLoader::AssimpLoader(){
 }
 
 AssimpLoader::~AssimpLoader(){
+	if (model){
+		delete model;
+	}
 }
 
 Model* AssimpLoader::getModel(){

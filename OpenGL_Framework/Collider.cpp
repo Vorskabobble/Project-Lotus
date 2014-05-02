@@ -4,6 +4,7 @@
 Collider::Collider(){
 	m_position = new Vector(0, 0, 0);
 	m_lastPosition = new Vector(0,0,0);
+	m_offset = new Vector(0, 0, 0);
 	boxMin = new Vector(0, 0, 0);
 	boxMax = new Vector(0, 0, 0);
 	m_canRender = false;
@@ -28,6 +29,12 @@ Collider::~Collider(){
 	}
 	if (boxMax){
 		delete boxMax;
+	}
+	if (m_offset){
+		delete m_offset;
+	}
+	if (renderObj){
+		delete renderObj;
 	}
 }
 
@@ -70,9 +77,14 @@ bool Collider::CheckCollision(Collider* collider){
 
 void Collider::setPosition(Vector position){
 	*m_lastPosition = *m_position;
-	*m_position = position;
+	*m_position = position + *m_offset;
 
 	if(m_type == BOX) calcMinMax();
+}
+
+void Collider::setOffset(Vector offset){
+	*m_offset = offset;
+	setPosition(*m_position);
 }
 
 void Collider::setCanRender(bool canRender){
@@ -110,6 +122,10 @@ Vector Collider::getPosition(){
 	return *m_position;
 }
 
+Vector Collider::getOffset(){
+	return *m_offset;
+}
+
 Vector Collider::getDimensions(){
 	Vector temp;
 	temp.x = m_width;
@@ -131,9 +147,10 @@ bool Collider::getRenderable(){
 }
 
 bool Collider::boxSphereCollision(Collider* collider){
-	Vector dir = collider->m_position - m_position;
-	dir.Normalize();
+	Vector dir = m_position - collider->m_position;
+//	dir.Normalize();
 	dir *= collider->m_width;
+	dir += *m_position;
 	return pointBoxCollision(dir);
 }
 
@@ -280,10 +297,12 @@ void Collider::calcMinMax(){
 void Collider::Render(){
 	if (m_canRender){
 		glPushMatrix();
+		glDisable(GL_LIGHTING);
+		glTranslatef(m_offset->x, m_offset->y, m_offset->z);
 		glColor3f(0, 1, 0);
-		glTranslatef(m_position->x, m_position->y, m_position->z);
-		glScalef(m_width, m_depth, m_height);
+		glScalef(m_width, m_height, m_depth);
 		renderObj->Render();
+		glEnable(GL_LIGHTING);
 		glPopMatrix();
 	}
 }

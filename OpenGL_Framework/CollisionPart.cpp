@@ -2,6 +2,7 @@
 #include "Object.h"
 
 CollisionPart::CollisionPart(){
+	renderBox = NULL;
 }
 
 CollisionPart::CollisionPart(CollisionPart* parent, int level, float x, float y, float z, float w, float h, float d){
@@ -27,6 +28,8 @@ CollisionPart::CollisionPart(CollisionPart* parent, int level, float x, float y,
 	m_child[1] = NULL;
 	m_child[2] = NULL;
 	m_child[3] = NULL;
+
+	renderBox = NULL;
 }
 
 
@@ -37,6 +40,10 @@ CollisionPart::~CollisionPart(){
 		delete m_child[1];
 		delete m_child[2];
 		delete m_child[3];
+	}
+
+	if (renderBox){
+		delete renderBox;
 	}
 }
 

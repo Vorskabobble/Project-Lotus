@@ -5,7 +5,9 @@ SceneAdapter::SceneAdapter(){
 }
 
 SceneAdapter::~SceneAdapter(){
-	delete manager;
+	if (manager){
+		delete manager;
+	}
 }
 
 void SceneAdapter::update(){

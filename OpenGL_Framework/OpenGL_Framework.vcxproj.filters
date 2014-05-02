@@ -91,6 +91,12 @@
     <Filter Include="Source Files\GameObjects">
       <UniqueIdentifier>{66654c0a-369e-4fa8-98a9-2521c8d5a4a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Troop\Barbarians">
+      <UniqueIdentifier>{b5f0fcd3-5387-429c-9563-92a5d52ce05e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Troops\Barbarians">
+      <UniqueIdentifier>{da551fff-b707-4cfe-ab5b-27357918807a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -315,10 +321,16 @@
     <ClCompile Include="noiseutils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BRMilitia.cpp">
+    <ClCompile Include="Cuboid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cuboid.cpp">
+    <ClCompile Include="BRTroopCreator.cpp">
+      <Filter>Source Files\Troop\Barbarians</Filter>
+    </ClCompile>
+    <ClCompile Include="BRMilitia.cpp">
+      <Filter>Source Files\Troop\Barbarians</Filter>
+    </ClCompile>
+    <ClCompile Include="Terrain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -572,7 +584,13 @@
     <ClInclude Include="noiseutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="BRTroopCreator.h">
+      <Filter>Header Files\Troops\Barbarians</Filter>
+    </ClInclude>
     <ClInclude Include="BRMilitia.h">
+      <Filter>Header Files\Troops\Barbarians</Filter>
+    </ClInclude>
+    <ClInclude Include="Terrain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,6 +1,13 @@
 #include "Game.h"
 #include "Move.h"
 
+#ifdef _DEBUG
+#ifndef DBG_NEW
+#define DBG_NEW new ( _NORMAL_BLOCK , __FILE__ , __LINE__ )
+#define new DBG_NEW
+#endif
+#endif  // _DEBUG
+
 Game::Game(void){
 }
 
@@ -34,16 +41,16 @@ void Game::Initialise(){
 	GInfo->SCREEN.height = m_height;
 	GInfo->SCREEN.hDC = hDC;
 
-	//lightPos[0] = 0; lightPos[1] = 1; lightPos[2] = 5; lightPos[3] = 1.0f;
-	//float whiteLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	//float ambLight[] = { 0.1f, 0.1f, 0.1f, 1.0f };
-	//glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
-	//glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteLight);
-	//glLightfv(GL_LIGHT0, GL_SPECULAR, whiteLight);
-	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambLight);
+	lightPos[0] = 0; lightPos[1] = 1; lightPos[2] = 5; lightPos[3] = 1.0f;
+	float whiteLight[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+	float ambLight[] = { 0.1f, 0.1f, 0.1f, 1.0f };
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, whiteLight);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, whiteLight);
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambLight);
 
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 }
 
 void Game::Shutdown(){
@@ -68,6 +75,9 @@ void Game::Shutdown(){
 	if (m_input){
 		delete m_input;
 	}
+	if (GUIHandle){
+		delete GUIHandle;
+	}
 	if (GInfo){
 //		delete GInfo;
 	}
@@ -76,21 +86,20 @@ void Game::Shutdown(){
 void Game::Update(){
 	timeControl->Update();
 
-	scene->update();
 	GUIHandle->Update();
 
-	GInfo->INPUT.lmouseX = 0;
-	GInfo->INPUT.lmouseY = 0;
+	scene->update();
+
+//	GInfo->INPUT.lmouseX = 0;
+//	GInfo->INPUT.lmouseY = 0;
 }
 
 // Render the objects in their current state.
 void Game::Render(){
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-//	glEnable(GL_LIGHTING);
-//	glEnable(GL_LIGHT0);
-	glDisable(GL_LIGHTING);
-	glDisable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 
 	scene->render();
 
@@ -112,25 +121,6 @@ void Game::Render2D(){
 	glDisable(GL_DEPTH_TEST);
 	glDisable(GL_LIGHTING);
 //#####################################
-	
-	if (director->getGameInfo("ShowDiff")){
-		char s[255];
-		sprintf(s, "Time : %4.4f ; Height : %3.3f ; Width : %3.3f", director->getGameInfo("Diff"), m_height, m_width);
-		Text->printString(0, GInfo->SCREEN.height, s);
-		Text->printString(0, 10, "Corey Bradford - University of Bolton");
-	}
-	if (director->getGameInfo("Menu")){
-		Text->printString(0, GInfo->SCREEN.height /2, "Press SPACE to start Game");
-	}
-	if (director->getGameInfo("Game")){
-		char s[255];
-		sprintf(s, "Health : %4.4f ;\nTroop : %4.4f ;\nScore : %4.4f ;", director->getGameInfo("Health"), director->getGameInfo("tHealth"), director->getGameInfo("Score"));
-		Text->printString(0, 50, s);
-	}
-
-	char xy[255];
-	sprintf_s(xy, "Mouse X : %i ; Mouse Y : %i", GInfo->INPUT.mouseX, GInfo->INPUT.mouseY);
-	Text->printString(400, 20, xy);
 
 	GUIHandle->Render();
 

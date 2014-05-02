@@ -24,7 +24,7 @@ bool ModelLoader::LoadModel(std::string name, const char* pFile){
 bool ModelLoader::UnLoadModel(std::string name){
 	if (models[name]){
 		delete models[name];
-		models[name] = NULL;
+		models.erase(name);
 		return true;
 	}
 	return false;

@@ -9,10 +9,78 @@ Model::Model(){
 
 Model::Model(int numMeshes, s_mesh* mesh){
 	numMesh = numMeshes;
-	meshes = new s_mesh[numMesh];
-	memcpy(meshes, mesh, sizeof(s_mesh)* numMesh);
 	wireframe = false;
 	texID = 0;
+
+	meshes = new s_mesh[numMesh];
+	for (int i = 0; i < numMesh; i++){
+		meshes[i].numVerts = mesh[i].numVerts;
+		meshes[i].numFaces = mesh[i].numFaces;
+		meshes[i].vertexArray = new vect3[meshes[i].numFaces * 3];
+		memcpy(meshes[i].vertexArray, mesh[i].vertexArray, sizeof(vect3)* meshes[i].numFaces * 3);
+
+		if (mesh[i].normalArray){
+			meshes[i].normalArray = new vect3[meshes[i].numFaces * 3];
+			memcpy(meshes[i].normalArray, mesh[i].normalArray, sizeof(vect3)* meshes[i].numFaces * 3);
+		}
+		else{
+			meshes[i].normalArray = NULL;
+		}
+
+		if (mesh[i].textUVArray){
+			meshes[i].textUVArray = new vect2[meshes[i].numFaces * 3];
+			memcpy(meshes[i].textUVArray, mesh[i].textUVArray, sizeof(vect2)* meshes[i].numFaces * 3);
+		}
+		else{
+			meshes[i].textUVArray = NULL;
+		}
+
+		if (mesh[i].vertices){
+			meshes[i].vertices = new vect3[meshes[i].numVerts];
+			memcpy(meshes[i].vertices, mesh[i].vertices, sizeof(vect3)* meshes[i].numVerts);
+		}
+		else{
+			meshes[i].vertices = NULL;
+		}
+	}
+}
+
+Model::Model(const Model& model){
+	numMesh = model.numMesh;
+	texID = model.texID;
+	wireframe = model.wireframe;
+
+	meshes = new s_mesh[numMesh];
+	for (int i = 0; i < numMesh; i++){
+		meshes[i].numVerts = model.meshes[i].numVerts;
+		meshes[i].numFaces = model.meshes[i].numFaces;
+		meshes[i].vertexArray = new vect3[meshes[i].numFaces * 3];
+		memcpy(meshes[i].vertexArray, model.meshes[i].vertexArray, sizeof(vect3)* meshes[i].numFaces * 3);
+
+		if (model.meshes[i].normalArray){
+			meshes[i].normalArray = new vect3[meshes[i].numFaces * 3];
+			memcpy(meshes[i].normalArray, model.meshes[i].normalArray, sizeof(vect3)* meshes[i].numFaces * 3);
+		}
+		else{
+			meshes[i].normalArray = NULL;
+		}
+
+		if (model.meshes[i].textUVArray){
+			meshes[i].textUVArray = new vect2[meshes[i].numFaces * 3];
+			memcpy(meshes[i].textUVArray, model.meshes[i].textUVArray, sizeof(vect2)* meshes[i].numFaces * 3);
+		}
+		else{
+			meshes[i].textUVArray = NULL;
+		}
+
+		if (model.meshes[i].vertices){
+			meshes[i].vertices = new vect3[meshes[i].numVerts];
+			memcpy(meshes[i].vertices, model.meshes[i].vertices, sizeof(vect3)* meshes[i].numVerts);
+		}
+		else{
+			meshes[i].vertices = NULL;
+		}
+	}
 }
 
 Model::~Model(){

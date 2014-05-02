@@ -51,10 +51,10 @@ void GUISlider::lRender(){
 	}
 	if (m_w > m_h){
 		float t_x = t_pos.x + (m_w * state->state);
-		boxRender(t_x, t_pos.y, 10, m_h, m_subColor);
+		boxRender(t_x, t_pos.y, 10, m_h, m_subColour);
 	}
 	else{
 		float t_y = t_pos.y + (m_h * state->state);
-		boxRender(t_pos.x, t_y, m_w, 10, m_subColor);
+		boxRender(t_pos.x, t_y, m_w, 10, m_subColour);
 	}
 }

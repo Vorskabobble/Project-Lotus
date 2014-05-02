@@ -9,5 +9,10 @@ BRMilitia::~BRMilitia(){
 void BRMilitia::Collided(Collider* hitObj){
 	if (hitObj->getAttachedObject()->getName() == "gate"){
 		getMove()->stop();
+		hitObj->getAttachedObject()->getStats()->setHealth(hitObj->getAttachedObject()->getStats()->getHealth() - ((getStats()->getAttack() / 2) * Game->TIME.delta));
+	}
+	if (hitObj->getAttachedObject()->getName() == "troop"){
+		ResolveBattle(dynamic_cast<PlayerTroop*>(hitObj->getAttachedObject()));
+		getMove()->stop();
 	}
 }

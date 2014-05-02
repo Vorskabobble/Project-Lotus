@@ -30,7 +30,7 @@ bool SceneManager::addScene(std::string name, Scene* scene){
 
 bool SceneManager::removeScene(std::string name){
 	if (m_scenes[name]){
-		m_scenes[name] = NULL;
+		m_scenes.erase(name);
 		return true;
 	}
 	return false;

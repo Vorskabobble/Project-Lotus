@@ -16,10 +16,12 @@ void Skybox::setPosition(Vector pos){
 }
 
 void Skybox::Render(){
+	glDisable(GL_LIGHTING);
 	glPushMatrix();
 		glTranslatef(position.x, position.y, position.z);
-//		glColor3f(0, 1, 0);
+		glColor3f(1, 1, 1);
 		glScalef(500, 500, 500);
 		model->Render();
 	glPopMatrix();
+	glEnable(GL_LIGHTING);
 }

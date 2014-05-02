@@ -18,7 +18,9 @@ public:
 	AssimpLoader();
 	~AssimpLoader();
 
+	//returns the loaded model scene
 	Model* getModel();
+	//loads a model scene
 	bool loadScene(const std::string& pFile);
 private:
 	void processScene(const aiScene* scene);

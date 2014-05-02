@@ -52,12 +52,12 @@ void PlayerTroop::Upgrade(float percent){
 
 void PlayerTroop::ResolveBattle(PlayerTroop* enemy){
 	if (getStats()->getAttack() > enemy->getStats()->getDefence()){
-		int damage = getStats()->getAttack();
-		damage -= enemy->getStats()->getArmour();
-		enemy->DealDamage(damage);
+		float damage = getStats()->getAttack();
+		damage /= enemy->getStats()->getArmour() + 1;
+		enemy->DealDamage(damage * Game->TIME.delta);
 	}
 }
 
-void PlayerTroop::DealDamage(int damage){
+void PlayerTroop::DealDamage(float damage){
 	getStats()->setHealth(getStats()->getHealth() - damage);
 }

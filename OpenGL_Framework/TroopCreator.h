@@ -8,7 +8,8 @@
 enum TROOPTYPE{
 	MILITIA = 0,
 	SWORDSMAN,
-	ARCHER
+	ARCHER,
+	KING
 };
 
 class TroopCreator{

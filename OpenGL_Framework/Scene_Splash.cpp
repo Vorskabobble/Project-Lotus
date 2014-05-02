@@ -1,6 +1,6 @@
 #include "Scene_Splash.h"
 
-Scene_Splash::Scene_Splash(){
+Scene_Splash::Scene_Splash() : Scene(){
 	model = NULL;
 	menu = NULL;
 }
@@ -10,20 +10,19 @@ Scene_Splash::~Scene_Splash(){
 		delete model;
 	}
 	if (menu){
-		director->unloadScene("menu");
+		director->unloadScene("Menu");
 		delete menu;
 	}
 	if (Game){
 		delete Game;
 	}
-	sndEngine->drop();
+//	sndEngine->drop();
 }
 
 void Scene_Splash::Initialise(){
-	modelLoader->LoadModel("troop", "Models/banana.obj");
+	modelLoader->LoadModel("troop", "Models/TestPlayer.obj");
 	model = new Object("troop");
 	model->setModel(modelLoader->getModel("troop"));
-	model->getModel()->loadTexture("Images/Banana body.bmp");
 
 	model->getMove()->getPosition().set(4.0f, 0.0f, 5.0f);
 	model->setScale(0.05f);
@@ -31,7 +30,6 @@ void Scene_Splash::Initialise(){
 	mainCamera->getMove()->setTargetDistance(10.0f);
 	mainCamera->getMove()->getPosition().set(0, 2, 0);
 	startTime = Game->TIME.current;
-	director->setGameInfo("ShowDiff", 1.0f);
 	
 	sndEngine = createIrrKlangDevice();
 	sndEngine->setSoundVolume(0.3f);
@@ -46,12 +44,11 @@ void Scene_Splash::Update(){
 		delete model;
 		model = NULL;
 		sndEngine->stopAllSounds();
-		menu = new SceneMenu;
+		menu = new SceneMenu();
 		director->loadScene("Menu", *menu);
 		director->changeScene("Menu");
 		director->setGameInfo("ShowDiff", 0.0f);
 	}
-	director->setGameInfo("Diff", Game->TIME.current - startTime);
 }
 
 void Scene_Splash::Render(){

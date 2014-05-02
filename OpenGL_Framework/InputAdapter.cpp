@@ -6,7 +6,9 @@ InputAdapter::InputAdapter(){
 }
 
 InputAdapter::~InputAdapter(){
-//	delete m_input;
+	if (m_input){
+		delete m_input;
+	}
 }
 
 void InputAdapter::processKeyDown(unsigned int key){

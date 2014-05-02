@@ -33,6 +33,7 @@ bool CollisionEngine::CreateTree(float x, float y, float z, float w, float h, fl
 bool CollisionEngine::DeleteTree(){
 	if (tree){
 		delete tree;
+		tree = NULL;
 		return true;
 	}
 	return false;
@@ -51,6 +52,7 @@ Collider* CollisionEngine::newBoxCollider(Vector position, float w, float h, flo
 	temp->setType(BOX);
 	temp->setPosition(position);
 	temp->setDimensions(w, h, d);
+	temp->setCanRender(true);
 	tree->addCollider(temp);
 	colliders.push_back(temp);
 	return temp;
@@ -83,8 +85,10 @@ void CollisionEngine::releaseCollider(Collider* collider){
 		std::vector<Collider*>::iterator it;
 		for (it = colliders.begin(); it != colliders.end(); it++){
 			if ((*it) == collider){
-				delete collider;
 				colliders.erase(it);
+				delete collider;
+				collider = NULL;
+				break;
 			}
 		}
 	}

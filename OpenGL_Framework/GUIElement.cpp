@@ -8,11 +8,13 @@ GUIElement::GUIElement(){
 	is3D = false;
 	canRender = true;
 	elementText = "";
-	m_color = COLOR_GRAY;
-	m_subColor = COLOR_WHITE;
+	m_colour = COLOUR_GRAY;
+	m_subColour = COLOUR_WHITE;
 	m_x = m_y = m_z = m_w = m_h = 0;
+	m_ox = m_oy = m_oz = 0;
 
-	Text = new BFont(Game->SCREEN.hDC, "Courier", 12);
+	Text = NULL;
+	setFont();
 }
 
 GUIElement::~GUIElement(){
@@ -41,17 +43,26 @@ void GUIElement::setFont(int size, char* font){
 		delete Text;
 	}
 	Text = new BFont(Game->SCREEN.hDC, font, size);
-	Text->setColor(COLOR_WHITE.r, COLOR_WHITE.g, COLOR_WHITE.b);
+	Text->setColor(COLOUR_WHITE.r, COLOUR_WHITE.g, COLOUR_WHITE.b);
+	fSize = size;
 }
 
 void GUIElement::setText(std::string text){
 	elementText = text;
 }
 
-void GUIElement::setPosition(int x, int y, int z){
-	m_x = x;
-	m_y = y;
-	m_z = z;
+void GUIElement::setPosition(float x, float y, float z){
+	m_x = x + m_ox;
+	m_y = y + m_oy;
+	m_z = z + m_oz;
+}
+
+void GUIElement::setOffset(float x, float y, float z){
+	m_ox = x;
+	m_oy = y;
+	m_oz = z;
+
+	setPosition(m_x, m_y, m_z);
 }
 
 void GUIElement::setDimensions(int pixelW, int pixelH){
@@ -59,12 +70,12 @@ void GUIElement::setDimensions(int pixelW, int pixelH){
 	m_h = pixelH;
 }
 
-void GUIElement::setColor(Color color){
-	m_color = color;
+void GUIElement::setColour(Colour colour){
+	m_colour = colour;
 }
 
-void GUIElement::setSubColor(Color color){
-	m_subColor = color;
+void GUIElement::setSubColour(Colour colour){
+	m_subColour = colour;
 }
 
 GUIState* GUIElement::getState(){
@@ -84,17 +95,17 @@ void GUIElement::Render(){
 		}
 
 		if (t_pos.z > 0  && t_pos.z <= 1){
-			boxRender(t_pos.x, t_pos.y, m_w, m_h, m_color);
-			Text->printString(t_pos.x, t_pos.y + 12, (char*)elementText.c_str());	
+			boxRender(t_pos.x - 2, t_pos.y - 2, m_w + 4, m_h + 4, m_colour);
+			Text->printString(t_pos.x + 5, t_pos.y + fSize, (char*)elementText.c_str());	
 			lRender();
 		}
 	}
 }
 
-void GUIElement::boxRender(int x, int y, int w, int h, Color color){
+void GUIElement::boxRender(int x, int y, int w, int h, Colour colour){
 	glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glColor4f(color.r, color.g, color.b, color.a);
+		glColor4f(colour.r, colour.g, colour.b, colour.a);
 		glBegin(GL_QUADS);
 			glVertex2f(x, y);
 			glVertex2f(x, y + h);

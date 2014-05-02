@@ -24,7 +24,6 @@ GUI::GUI(){
 GUI::~GUI(){
 	for (auto& window : windows){
 		delete window.second;
-		window.second = NULL;
 	}
 	windows.clear();
 	instance = NULL;
@@ -66,7 +65,7 @@ GUIWindow* GUI::getWindow(std::string ID){
 void GUI::ReleaseWindow(std::string ID){
 	if (windows[ID] && ID != "base"){
 		delete windows[ID];
-		windows[ID] = NULL;
+		windows.erase(ID);
 	}
 }
 
@@ -79,7 +78,9 @@ void GUI::Update(){
 }
 
 void GUI::Render(){
+	glDisable(GL_LIGHTING);
 	for (auto& window : windows){
 		window.second->Render();
 	}
+	glEnable(GL_LIGHTING);
 }

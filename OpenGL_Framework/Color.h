@@ -1,21 +1,21 @@
 #pragma once
 
-#define COLOR_WHITE		 Color{1.0f, 1.0f, 1.0f, 1.0f}
-#define COLOR_GRAY		 Color{0.5f, 0.5f, 0.5f, 1.0f}
-#define COLOR_BLACK		 Color{0.0f, 0.0f, 0.0f, 1.0f}
-#define COLOR_RED		 Color{1.0f, 0.0f, 0.0f, 1.0f}
-#define COLOR_GREEN		 Color{0.0f, 1.0f, 0.0f, 1.0f}
-#define COLOR_BLUE		 Color{0.0f, 0.0f, 1.0f, 1.0f}
-#define COLOR_YELLOW	 Color{1.0f, 1.0f, 0.0f, 1.0f}
-#define COLOR_ORANGE	 Color{1.0f, 0.5f, 0.0f, 1.0f}
-#define COLOR_PINK		 Color{1.0f, 0.0f, 1.0f, 1.0f}
-#define COLOR_PURPLE	 Color{0.5f, 0.0f, 1.0f, 1.0f}
-#define COLOR_CYAN		 Color{0.0f, 1.0f, 1.0f, 1.0f}
-#define COLOR_LIME		 Color{0.0f, 1.0f, 0,5f, 1.0f}
-
-struct Color{
+struct Colour{
 	float r;
 	float g;
 	float b;
 	float a;
 };
+
+#define COLOUR_WHITE	 Colour{1.0f, 1.0f, 1.0f, 1.0f}
+#define COLOUR_GRAY		 Colour{0.5f, 0.5f, 0.5f, 1.0f}
+#define COLOUR_BLACK	 Colour{0.0f, 0.0f, 0.0f, 1.0f}
+#define COLOUR_RED		 Colour{1.0f, 0.0f, 0.0f, 1.0f}
+#define COLOUR_GREEN	 Colour{0.0f, 1.0f, 0.0f, 1.0f}
+#define COLOUR_BLUE		 Colour{0.0f, 0.0f, 1.0f, 1.0f}
+#define COLOUR_YELLOW	 Colour{1.0f, 1.0f, 0.0f, 1.0f}
+#define COLOUR_ORANGE	 Colour{1.0f, 0.5f, 0.0f, 1.0f}
+#define COLOUR_PINK		 Colour{1.0f, 0.0f, 1.0f, 1.0f}
+#define COLOUR_PURPLE	 Colour{0.5f, 0.0f, 1.0f, 1.0f}
+#define COLOUR_CYAN		 Colour{0.0f, 1.0f, 1.0f, 1.0f}
+#define COLOUR_LIME		 Colour{0.0f, 1.0f, 0,5f, 1.0f}

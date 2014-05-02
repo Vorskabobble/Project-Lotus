@@ -20,6 +20,6 @@ public:
 
 	void Upgrade(float percent);
 	void ResolveBattle(PlayerTroop* enemy);
-	void DealDamage(int damage);
+	void DealDamage(float damage);
 };
 

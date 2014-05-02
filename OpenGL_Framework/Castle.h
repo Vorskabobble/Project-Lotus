@@ -13,16 +13,24 @@ protected:
 
 	ModelLoader* loader;
 	CollisionEngine* collision;
+
+	float gold;
 private:
 	bool defeated;
 public:
 	Castle();
-	~Castle();
+	virtual ~Castle();
 
 	virtual void Initialise() = 0;
 
+	//returns true when the throne level is occupied
 	bool Defeated();
 
 	void Update();
 	void Render();
+
+	//pass a gold value for purchases in the castle
+	void setGold(float gold);
+	//returns updated gold after castle update
+	float getGold();
 };

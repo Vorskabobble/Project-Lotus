@@ -43,39 +43,39 @@ void Stats::setPlayerID(int playerID){
 	m_playerID = playerID;
 }
 
-void Stats::setHealth(int health){
+void Stats::setHealth(float health){
 	m_health = health;
 }
 
-void Stats::setMaxHealth(int health){
+void Stats::setMaxHealth(float health){
 	m_maxHealth = health;
 }
 
-void Stats::setAttack(int attack){
+void Stats::setAttack(float attack){
 	m_attack = attack;
 }
 
-void Stats::setMaxAttack(int attack){
+void Stats::setMaxAttack(float attack){
 	m_maxAttack = attack;
 }
 
-void Stats::setArmour(int armour){
+void Stats::setArmour(float armour){
 	m_armour = armour;
 }
 
-void Stats::setMaxArmour(int armour){
+void Stats::setMaxArmour(float armour){
 	m_maxArmour = armour;
 }
 
-void Stats::setDefence(int defence){
+void Stats::setDefence(float defence){
 	m_defence = defence;
 }
 
-void Stats::setMaxDefence(int defence){
+void Stats::setMaxDefence(float defence){
 	m_maxDefence = defence;
 }
 
-void Stats::setRange(int range){
+void Stats::setRange(float range){
 	m_maxRange = range;
 }
 
@@ -87,39 +87,39 @@ int Stats::getLevel(){
 	return m_level;
 }
 
-int Stats::getHealth(){
+float Stats::getHealth(){
 	return m_health;
 }
 
-int Stats::getMaxHealth(){
+float Stats::getMaxHealth(){
 	return m_maxHealth;
 }
 
-int Stats::getAttack(){
+float Stats::getAttack(){
 	return m_attack;
 }
 
-int Stats::getMaxAttack(){
+float Stats::getMaxAttack(){
 	return m_maxAttack;
 }
 
-int Stats::getArmour(){
+float Stats::getArmour(){
 	return m_armour;
 }
 
-int Stats::getMaxArmour(){
+float Stats::getMaxArmour(){
 	return m_maxArmour;
 }
 
-int Stats::getDefence(){
+float Stats::getDefence(){
 	return m_defence;
 }
 
-int Stats::getMaxDefence(){
+float Stats::getMaxDefence(){
 	return m_maxDefence;
 }
 
-int Stats::getRange(){
+float Stats::getRange(){
 	return m_maxRange;
 }
 

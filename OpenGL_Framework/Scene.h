@@ -12,6 +12,8 @@
 
 using namespace irrklang;
 
+//all scenes should inherit from this class
+
 class Scene{
 protected:
 	GameDirector* director;

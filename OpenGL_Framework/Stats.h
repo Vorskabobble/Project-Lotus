@@ -4,19 +4,19 @@ private:
 	int m_level;
 	int m_playerID;
 
-	int m_health;
-	int m_maxHealth;
+	float m_health;
+	float m_maxHealth;
 
-	int m_attack;
-	int m_maxAttack;
+	float m_attack;
+	float m_maxAttack;
 
-	int m_armour;
-	int m_maxArmour;
+	float m_armour;
+	float m_maxArmour;
 
-	int m_defence;
-	int m_maxDefence;
+	float m_defence;
+	float m_maxDefence;
 
-	int m_maxRange;
+	float m_maxRange;
 	float m_maxSpeed;
 public:
 	Stats();
@@ -25,28 +25,28 @@ public:
 
 	void setLevel(int level);
 	void setPlayerID(int playerID);
-	void setHealth(int health);
-	void setMaxHealth(int health);
-	void setAttack(int attack);
-	void setMaxAttack(int attack);
-	void setArmour(int armour);
-	void setMaxArmour(int armour);
-	void setDefence(int defence);
-	void setMaxDefence(int defence);
-	void setRange(int range);
+	void setHealth(float health);
+	void setMaxHealth(float health);
+	void setAttack(float attack);
+	void setMaxAttack(float attack);
+	void setArmour(float armour);
+	void setMaxArmour(float armour);
+	void setDefence(float defence);
+	void setMaxDefence(float defence);
+	void setRange(float range);
 	void setSpeed(float speed);
 
 	int getLevel();
 	int getPlayerID();
-	int getHealth();
-	int getMaxHealth();
-	int getAttack();
-	int getMaxAttack();
-	int getArmour();
-	int getMaxArmour();
-	int getDefence();
-	int getMaxDefence();
-	int getRange();
+	float getHealth();
+	float getMaxHealth();
+	float getAttack();
+	float getMaxAttack();
+	float getArmour();
+	float getMaxArmour();
+	float getDefence();
+	float getMaxDefence();
+	float getRange();
 	float getSpeed();
 };
 

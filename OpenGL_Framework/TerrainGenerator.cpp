@@ -10,15 +10,15 @@ TerrainGenerator::~TerrainGenerator(void){
 void TerrainGenerator::createLand(int seed){
 	Image image, image2;
 
-	image = renderNoiseGreyScale(2, 1.0f, 1.0f, 1.0f, seed);
-	image2 = renderNoiseColor(2, 1.0f, 1.0f, 1.0f, seed);
+	image = renderNoiseGreyScale(1, 2.0f, 1.0f, 2.0f, seed);
+	image2 = renderNoiseColor(1, 2.0f, 1.0f, 2.0f, seed);
 
 	WriterBMP writer;
-	writer.SetDestFilename("Images/LandGreyScale.bmp");
+	writer.SetDestFilename("Images/TerrainHeight.bmp");
 	writer.SetSourceImage(image);
 	writer.WriteDestFile();
 
-	writer.SetDestFilename("Images/LandColor.bmp");
+	writer.SetDestFilename("Images/TerrainTex.bmp");
 	writer.SetSourceImage(image2);
 	writer.WriteDestFile();
 }
@@ -38,7 +38,7 @@ Image TerrainGenerator::renderNoiseGreyScale(int oct, float freq, float pers, fl
 
 	heightMapBuilder.SetSourceModule(myModule);
 	heightMapBuilder.SetDestNoiseMap(heightMap);
-	heightMapBuilder.SetDestSize(512, 256);
+	heightMapBuilder.SetDestSize(256, 256);
 	heightMapBuilder.SetBounds(2.0f, 4.0f, 2.0f, 4.0f);
 	heightMapBuilder.Build();
 
@@ -67,15 +67,19 @@ Image TerrainGenerator::renderNoiseColor(int oct, float freq, float pers, float 
 
 	heightMapBuilder.SetSourceModule(myModule);
 	heightMapBuilder.SetDestNoiseMap(heightMap);
-	heightMapBuilder.SetDestSize(512, 256);
+	heightMapBuilder.SetDestSize(256, 256);
 	heightMapBuilder.SetBounds(2.0f, 4.0f, 2.0f, 4.0f);
 	heightMapBuilder.Build();
 
 	renderer.SetSourceNoiseMap(heightMap);
 	renderer.SetDestImage(image);
 	renderer.ClearGradient();
-	renderer.AddGradientPoint(-1, utils::Color(0, 0, 0, 255)); // sand
-	renderer.AddGradientPoint(1, utils::Color(255, 255, 255, 255)); // grass
+	renderer.AddGradientPoint(-1.0000, utils::Color(144, 95, 0, 255)); // shallow
+	renderer.AddGradientPoint(-0.7000, utils::Color(118, 157, 0, 255)); // shore
+	renderer.AddGradientPoint(0.22500, utils::Color(82, 143, 28, 255)); // sand
+	renderer.AddGradientPoint(0.37500, utils::Color(87, 148, 0, 255)); // dirt
+	renderer.AddGradientPoint(0.75000, utils::Color(128, 128, 128, 255)); // rock
+	renderer.AddGradientPoint(1.00000, utils::Color(255, 255, 255, 255)); // snow
 	renderer.Render();
 
 	return image;

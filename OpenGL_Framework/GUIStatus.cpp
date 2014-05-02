@@ -37,21 +37,21 @@ void GUIStatus::lRender(){
 	if (t_w > t_h){
 		if (m_w > 0){
 			float t_w = m_w * state->state;
-			boxRender(t_pos.x, t_pos.y, t_w, m_h, m_subColor);
+			boxRender(t_pos.x, t_pos.y, t_w, m_h, m_subColour);
 		}
 		else{
 			float t_w = -m_w * state->state;
-			boxRender(t_pos.x - t_w, t_pos.y, t_w, m_h, m_subColor);
+			boxRender((t_pos.x - t_w), t_pos.y, t_w, m_h, m_subColour);
 		}
 	}
 	else{
 		if (m_h > 0){
 			float t_h = m_h * state->state;
-			boxRender(t_pos.x, t_pos.y, m_w, t_h, m_subColor);
+			boxRender(t_pos.x, t_pos.y, m_w, t_h, m_subColour);
 		}
 		else{
 			float t_h = m_h * state->state;
-			boxRender(t_pos.x, t_pos.y - t_h, m_w, m_h, m_subColor);
+			boxRender(t_pos.x, (t_pos.y - t_h), m_w, m_h, m_subColour);
 		}
 	}
 }

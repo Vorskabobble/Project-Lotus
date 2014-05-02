@@ -7,7 +7,6 @@ GUIWindow::GUIWindow(){
 GUIWindow::~GUIWindow(){
 	for (auto& element : elements){
 		delete element.second;
-		element.second = NULL;
 	}
 	elements.clear();
 }
@@ -15,7 +14,7 @@ GUIWindow::~GUIWindow(){
 void GUIWindow::releaseElement(std::string ID){
 	if (elements[ID]){
 		delete elements[ID];
-		elements[ID] = NULL;
+		elements.erase(ID);
 	}
 }
 

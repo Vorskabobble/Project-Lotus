@@ -1,5 +1,7 @@
 #pragma once
 
+//structures for holding mesh data used in a model
+
 typedef struct{
 	float x;
 	float y;

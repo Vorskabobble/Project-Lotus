@@ -3,6 +3,8 @@
 #include "AssimpLoader.h"
 #include <map>
 
+//stores models that are loaded so they can be accessed without reloading them
+
 class ModelLoader{
 private:
 	std::map<std::string, Model*> models;

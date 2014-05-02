@@ -8,8 +8,8 @@ Scene::Scene(){
 	modelLoader = new ModelLoader();
 	collisionEngine = CollisionEngine::getInstance();
 	
-	sndEngine = createIrrKlangDevice();
-	sndEngine->setSoundVolume(0.3f);
+	//sndEngine = createIrrKlangDevice();
+	//sndEngine->setSoundVolume(0.3f);
 }
 
 Scene::~Scene(){
